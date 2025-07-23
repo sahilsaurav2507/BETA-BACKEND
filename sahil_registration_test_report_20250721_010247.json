@@ -1,0 +1,189 @@
+{
+  "test_summary": {
+    "user": {
+      "name": "Sahil Saurav",
+      "email": "sahilsaurav2507@gmail.com",
+      "password": "SecurePassword123!"
+    },
+    "total_tests": 8,
+    "passed_tests": 6,
+    "success_rate": 75.0,
+    "timestamp": "2025-07-21T01:02:47.734611"
+  },
+  "test_results": [
+    {
+      "test_name": "API Health Check",
+      "success": true,
+      "timestamp": "2025-07-21T01:02:36.828926",
+      "details": {
+        "status_code": 200,
+        "response": {
+          "status": "healthy"
+        }
+      }
+    },
+    {
+      "test_name": "User Registration",
+      "success": false,
+      "timestamp": "2025-07-21T01:02:37.981148",
+      "details": {
+        "status_code": 400,
+        "error": "{\"error\":{\"code\":\"HTTP_400\",\"message\":\"Email already registered\",\"timestamp\":1753039957.9791336}}"
+      }
+    },
+    {
+      "test_name": "User Login",
+      "success": true,
+      "timestamp": "2025-07-21T01:02:39.577108",
+      "details": {
+        "status_code": 200,
+        "token_type": "bearer",
+        "expires_in": 3600,
+        "token_received": true
+      }
+    },
+    {
+      "test_name": "User Profile",
+      "success": true,
+      "timestamp": "2025-07-21T01:02:40.591626",
+      "details": {
+        "status_code": 200,
+        "user_id": 10,
+        "name": "Sahil Saurav",
+        "email": "sahilsaurav2507@gmail.com",
+        "total_points": 11,
+        "shares_count": 4,
+        "current_rank": 4
+      }
+    },
+    {
+      "test_name": "Social Sharing Flow",
+      "success": false,
+      "timestamp": "2025-07-21T01:02:43.662227",
+      "details": {
+        "platforms_tested": 4,
+        "total_points_earned": 0,
+        "expected_total_points": 11,
+        "sharing_results": {
+          "twitter": {
+            "success": true,
+            "points_earned": 0,
+            "expected_points": 1,
+            "total_points": 11,
+            "new_rank": null,
+            "share_id": null,
+            "message": "You have already shared on this platform. No additional points awarded.",
+            "points_validation": "\u274c Points mismatch"
+          },
+          "facebook": {
+            "success": true,
+            "points_earned": 0,
+            "expected_points": 3,
+            "total_points": 11,
+            "new_rank": null,
+            "share_id": null,
+            "message": "You have already shared on this platform. No additional points awarded.",
+            "points_validation": "\u274c Points mismatch"
+          },
+          "linkedin": {
+            "success": true,
+            "points_earned": 0,
+            "expected_points": 5,
+            "total_points": 11,
+            "new_rank": null,
+            "share_id": null,
+            "message": "You have already shared on this platform. No additional points awarded.",
+            "points_validation": "\u274c Points mismatch"
+          },
+          "instagram": {
+            "success": true,
+            "points_earned": 0,
+            "expected_points": 2,
+            "total_points": 11,
+            "new_rank": null,
+            "share_id": null,
+            "message": "You have already shared on this platform. No additional points awarded.",
+            "points_validation": "\u274c Points mismatch"
+          }
+        }
+      }
+    },
+    {
+      "test_name": "Share Analytics",
+      "success": true,
+      "timestamp": "2025-07-21T01:02:44.697951",
+      "details": {
+        "status_code": 200,
+        "total_shares": 4,
+        "points_breakdown": {
+          "facebook": {
+            "shares": 1,
+            "points": 3
+          },
+          "twitter": {
+            "shares": 1,
+            "points": 1
+          },
+          "linkedin": {
+            "shares": 1,
+            "points": 5
+          },
+          "instagram": {
+            "shares": 1,
+            "points": 2
+          }
+        },
+        "recent_activity": [
+          {
+            "platform": "instagram",
+            "points": "2",
+            "timestamp": "2025-07-20T18:32:48"
+          },
+          {
+            "platform": "facebook",
+            "points": "3",
+            "timestamp": "2025-07-20T18:32:47"
+          },
+          {
+            "platform": "linkedin",
+            "points": "5",
+            "timestamp": "2025-07-20T18:32:47"
+          },
+          {
+            "platform": "twitter",
+            "points": "1",
+            "timestamp": "2025-07-20T18:32:46"
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "Leaderboard Position",
+      "success": true,
+      "timestamp": "2025-07-21T01:02:45.728061",
+      "details": {
+        "status_code": 200,
+        "total_users": 17,
+        "sahil_found": true,
+        "sahil_position": {
+          "rank": 4,
+          "points": 11,
+          "shares_count": 4,
+          "position_in_list": 4
+        },
+        "initial_rank": 4,
+        "rank_improvement": "\ud83d\udcca Rank tracked"
+      }
+    },
+    {
+      "test_name": "Email System Verification",
+      "success": true,
+      "timestamp": "2025-07-21T01:02:46.730679",
+      "details": {
+        "email_task_queued": "\u2705 Registration completed (email task likely queued)",
+        "note": "Direct email verification requires SMTP server access",
+        "recommendation": "Check email logs and SMTP configuration"
+      }
+    }
+  ]
+}

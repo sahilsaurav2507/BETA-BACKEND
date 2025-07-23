@@ -1,0 +1,577 @@
+{
+  "timestamp": "2025-07-20T23:17:55.922745",
+  "base_url": "http://localhost:8000",
+  "summary": {
+    "total_tests": 15,
+    "passed": 15,
+    "failed": 0,
+    "average_response_time": 0.20534202257792156
+  },
+  "results": [
+    {
+      "name": "Health Check",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 2.0252745151519775,
+      "response_data": {
+        "status": "healthy"
+      }
+    },
+    {
+      "name": "User Signup",
+      "status_code": 201,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.38973116874694824,
+      "response_data": {
+        "user_id": 9,
+        "name": "API Test User",
+        "email": "apitest_1753033668@example.com",
+        "created_at": "2025-07-20T17:47:52",
+        "total_points": 0,
+        "shares_count": 0,
+        "current_rank": null,
+        "is_admin": false
+      }
+    },
+    {
+      "name": "User Login",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.262631893157959,
+      "response_data": {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJlbWFpbCI6ImFwaXRlc3RfMTc1MzAzMzY2OEBleGFtcGxlLmNvbSIsImlzX2FkbWluIjpmYWxzZSwiZXhwIjoxNzUzMDM3MjcyfQ.J96c78NfVAPoVIxMWyHj4--AoZKuvFiUoCzMSbn60wY",
+        "token_type": "bearer",
+        "expires_in": 3600
+      }
+    },
+    {
+      "name": "Get Current User",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.0071582794189453125,
+      "response_data": {
+        "user_id": 9,
+        "name": "API Test User",
+        "email": "apitest_1753033668@example.com",
+        "created_at": "2025-07-20T17:47:52",
+        "total_points": 0,
+        "shares_count": 0,
+        "current_rank": null,
+        "is_admin": false
+      }
+    },
+    {
+      "name": "Share on Twitter",
+      "status_code": 201,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.019560575485229492,
+      "response_data": {
+        "share_id": 20,
+        "user_id": 9,
+        "platform": "twitter",
+        "points_earned": 1,
+        "total_points": 1,
+        "new_rank": null,
+        "timestamp": "2025-07-20T17:47:54",
+        "message": "Share recorded successfully! You earned 1 points."
+      }
+    },
+    {
+      "name": "Share on Facebook",
+      "status_code": 201,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.012439727783203125,
+      "response_data": {
+        "share_id": 21,
+        "user_id": 9,
+        "platform": "facebook",
+        "points_earned": 3,
+        "total_points": 4,
+        "new_rank": null,
+        "timestamp": "2025-07-20T17:47:54",
+        "message": "Share recorded successfully! You earned 3 points."
+      }
+    },
+    {
+      "name": "Share on Linkedin",
+      "status_code": 201,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.014415264129638672,
+      "response_data": {
+        "share_id": 22,
+        "user_id": 9,
+        "platform": "linkedin",
+        "points_earned": 5,
+        "total_points": 9,
+        "new_rank": null,
+        "timestamp": "2025-07-20T17:47:55",
+        "message": "Share recorded successfully! You earned 5 points."
+      }
+    },
+    {
+      "name": "Share on Instagram",
+      "status_code": 201,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.012508869171142578,
+      "response_data": {
+        "share_id": 23,
+        "user_id": 9,
+        "platform": "instagram",
+        "points_earned": 2,
+        "total_points": 11,
+        "new_rank": null,
+        "timestamp": "2025-07-20T17:47:55",
+        "message": "Share recorded successfully! You earned 2 points."
+      }
+    },
+    {
+      "name": "Share History",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.011825323104858398,
+      "response_data": {
+        "shares": [
+          {
+            "share_id": 22,
+            "platform": "linkedin",
+            "points_earned": 5,
+            "timestamp": "2025-07-20T17:47:55"
+          },
+          {
+            "share_id": 23,
+            "platform": "instagram",
+            "points_earned": 2,
+            "timestamp": "2025-07-20T17:47:55"
+          },
+          {
+            "share_id": 20,
+            "platform": "twitter",
+            "points_earned": 1,
+            "timestamp": "2025-07-20T17:47:54"
+          },
+          {
+            "share_id": 21,
+            "platform": "facebook",
+            "points_earned": 3,
+            "timestamp": "2025-07-20T17:47:54"
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "limit": 20,
+          "total": 4,
+          "pages": 1
+        }
+      }
+    },
+    {
+      "name": "Share Analytics",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.015717029571533203,
+      "response_data": {
+        "total_shares": 4,
+        "points_breakdown": {
+          "facebook": {
+            "shares": 1,
+            "points": 3
+          },
+          "twitter": {
+            "shares": 1,
+            "points": 1
+          },
+          "linkedin": {
+            "shares": 1,
+            "points": 5
+          },
+          "instagram": {
+            "shares": 1,
+            "points": 2
+          }
+        },
+        "recent_activity": [
+          {
+            "platform": "linkedin",
+            "points": "5",
+            "timestamp": "2025-07-20T17:47:55"
+          },
+          {
+            "platform": "instagram",
+            "points": "2",
+            "timestamp": "2025-07-20T17:47:55"
+          },
+          {
+            "platform": "twitter",
+            "points": "1",
+            "timestamp": "2025-07-20T17:47:54"
+          },
+          {
+            "platform": "facebook",
+            "points": "3",
+            "timestamp": "2025-07-20T17:47:54"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Leaderboard",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.011955738067626953,
+      "response_data": {
+        "leaderboard": [
+          {
+            "rank": 1,
+            "user_id": 4,
+            "name": "Mike Johnson",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 2,
+            "user_id": 7,
+            "name": "API Test User",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 3,
+            "user_id": 8,
+            "name": "API Test User",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 4,
+            "user_id": 9,
+            "name": "API Test User",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 5,
+            "user_id": 1,
+            "name": "John Doe",
+            "points": 9,
+            "shares_count": 3,
+            "badge": null
+          },
+          {
+            "rank": 6,
+            "user_id": 5,
+            "name": "Sarah Wilson",
+            "points": 8,
+            "shares_count": 2,
+            "badge": null
+          },
+          {
+            "rank": 7,
+            "user_id": 2,
+            "name": "Jane Smith",
+            "points": 3,
+            "shares_count": 2,
+            "badge": null
+          },
+          {
+            "rank": 8,
+            "user_id": 3,
+            "name": "Admin User",
+            "points": 0,
+            "shares_count": 0,
+            "badge": null
+          },
+          {
+            "rank": 9,
+            "user_id": 6,
+            "name": "Test User After Fix",
+            "points": 0,
+            "shares_count": 0,
+            "badge": null
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "limit": 50,
+          "total": 9,
+          "pages": 1
+        },
+        "metadata": {
+          "total_users": 9,
+          "your_rank": null,
+          "your_points": 0
+        }
+      }
+    },
+    {
+      "name": "Leaderboard (Page 1)",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.00865030288696289,
+      "response_data": {
+        "leaderboard": [
+          {
+            "rank": 1,
+            "user_id": 4,
+            "name": "Mike Johnson",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 2,
+            "user_id": 7,
+            "name": "API Test User",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 3,
+            "user_id": 8,
+            "name": "API Test User",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 4,
+            "user_id": 9,
+            "name": "API Test User",
+            "points": 11,
+            "shares_count": 4,
+            "badge": null
+          },
+          {
+            "rank": 5,
+            "user_id": 1,
+            "name": "John Doe",
+            "points": 9,
+            "shares_count": 3,
+            "badge": null
+          },
+          {
+            "rank": 6,
+            "user_id": 5,
+            "name": "Sarah Wilson",
+            "points": 8,
+            "shares_count": 2,
+            "badge": null
+          },
+          {
+            "rank": 7,
+            "user_id": 2,
+            "name": "Jane Smith",
+            "points": 3,
+            "shares_count": 2,
+            "badge": null
+          },
+          {
+            "rank": 8,
+            "user_id": 3,
+            "name": "Admin User",
+            "points": 0,
+            "shares_count": 0,
+            "badge": null
+          },
+          {
+            "rank": 9,
+            "user_id": 6,
+            "name": "Test User After Fix",
+            "points": 0,
+            "shares_count": 0,
+            "badge": null
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "limit": 10,
+          "total": 9,
+          "pages": 1
+        },
+        "metadata": {
+          "total_users": 9,
+          "your_rank": null,
+          "your_points": 0
+        }
+      }
+    },
+    {
+      "name": "Admin Login",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.2670605182647705,
+      "response_data": {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGxhd3ZyaWtzaC5jb20iLCJpc19hZG1pbiI6dHJ1ZSwiZXhwIjoxNzUzMDM3Mjc1fQ.n4ETBpbqlgKhclGFgFIIo3s0crMtNTvBxhlus_YZbxg",
+        "token_type": "bearer",
+        "expires_in": 3600
+      }
+    },
+    {
+      "name": "Admin Dashboard",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.010053157806396484,
+      "response_data": {
+        "overview": {
+          "total_users": 9,
+          "active_users_24h": 9,
+          "total_shares_today": 0,
+          "points_distributed_today": 0
+        },
+        "platform_breakdown": {
+          "facebook": {
+            "shares": 0.0,
+            "percentage": 0.0
+          },
+          "twitter": {
+            "shares": 0.0,
+            "percentage": 0.0
+          },
+          "linkedin": {
+            "shares": 0.0,
+            "percentage": 0.0
+          }
+        },
+        "growth_metrics": {
+          "new_users_7d": 0.0,
+          "user_retention_rate": 0.0,
+          "average_session_duration": 0.0
+        }
+      }
+    },
+    {
+      "name": "Admin Users List",
+      "status_code": 200,
+      "success": true,
+      "error_message": null,
+      "execution_time": 0.01114797592163086,
+      "response_data": {
+        "users": [
+          {
+            "user_id": 4,
+            "name": "Mike Johnson",
+            "email": "mike@example.com",
+            "points": 11,
+            "rank": null,
+            "shares_count": 4,
+            "status": "active",
+            "last_activity": "2025-07-20T22:43:27",
+            "created_at": "2025-07-20T22:43:27"
+          },
+          {
+            "user_id": 7,
+            "name": "API Test User",
+            "email": "apitest_1753032931@example.com",
+            "points": 11,
+            "rank": null,
+            "shares_count": 4,
+            "status": "active",
+            "last_activity": "2025-07-20T23:05:38",
+            "created_at": "2025-07-20T17:35:35"
+          },
+          {
+            "user_id": 8,
+            "name": "API Test User",
+            "email": "apitest_1753033447@example.com",
+            "points": 11,
+            "rank": null,
+            "shares_count": 4,
+            "status": "active",
+            "last_activity": "2025-07-20T23:14:13",
+            "created_at": "2025-07-20T17:44:11"
+          },
+          {
+            "user_id": 9,
+            "name": "API Test User",
+            "email": "apitest_1753033668@example.com",
+            "points": 11,
+            "rank": null,
+            "shares_count": 4,
+            "status": "active",
+            "last_activity": "2025-07-20T23:17:55",
+            "created_at": "2025-07-20T17:47:52"
+          },
+          {
+            "user_id": 1,
+            "name": "John Doe",
+            "email": "john@example.com",
+            "points": 9,
+            "rank": null,
+            "shares_count": 3,
+            "status": "active",
+            "last_activity": "2025-07-20T22:43:27",
+            "created_at": "2025-07-20T22:43:27"
+          },
+          {
+            "user_id": 5,
+            "name": "Sarah Wilson",
+            "email": "sarah@example.com",
+            "points": 8,
+            "rank": null,
+            "shares_count": 2,
+            "status": "active",
+            "last_activity": "2025-07-20T22:43:27",
+            "created_at": "2025-07-20T22:43:27"
+          },
+          {
+            "user_id": 2,
+            "name": "Jane Smith",
+            "email": "jane@example.com",
+            "points": 3,
+            "rank": null,
+            "shares_count": 2,
+            "status": "active",
+            "last_activity": "2025-07-20T22:43:27",
+            "created_at": "2025-07-20T22:43:27"
+          },
+          {
+            "user_id": 3,
+            "name": "Admin User",
+            "email": "admin@lawvriksh.com",
+            "points": 0,
+            "rank": null,
+            "shares_count": 0,
+            "status": "active",
+            "last_activity": "2025-07-20T23:13:27",
+            "created_at": "2025-07-20T22:43:27"
+          },
+          {
+            "user_id": 6,
+            "name": "Test User After Fix",
+            "email": "testafter_1753032899@example.com",
+            "points": 0,
+            "rank": null,
+            "shares_count": 0,
+            "status": "active",
+            "last_activity": "2025-07-20T23:05:02",
+            "created_at": "2025-07-20T17:35:02"
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "limit": 50,
+          "total": 9,
+          "pages": 1
+        }
+      }
+    }
+  ]
+}
