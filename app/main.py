@@ -18,6 +18,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Validate configuration on startup
+try:
+    logger.info(f"Starting FastAPI application with database: {settings.database_url[:50]}...")
+    logger.info(f"Frontend URL configured: {settings.FRONTEND_URL}")
+    logger.info("Configuration loaded successfully")
+except Exception as e:
+    logger.error(f"Configuration validation failed: {e}")
+    raise
+
 # Create FastAPI app with enhanced metadata
 app = FastAPI(
     title="Lawvriksh Referral Platform API",
