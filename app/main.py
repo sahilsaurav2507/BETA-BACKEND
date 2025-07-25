@@ -2,7 +2,10 @@ import os
 import logging
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import auth, users, shares, leaderboard, admin, campaigns, feedback, async_leaderboard
+from contextlib import asynccontextmanager
+from sqlalchemy import text
+from app.api import auth, users, shares, leaderboard, admin, campaigns, feedback, async_leaderboard, email_queue
+from app.services.background_email_processor import start_background_email_processor, stop_background_email_processor
 from app.utils.monitoring import prometheus_middleware, prometheus_endpoint
 from app.core.error_handlers import setup_error_handlers, RateLimitError
 from app.core.config import settings
@@ -18,14 +21,84 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Create FastAPI app with enhanced metadata
+# Validate configuration on startup
+try:
+    logger.info("🚀 Starting FastAPI application...")
+    logger.info(f"📊 Database URL: {settings.database_url[:50]}...")
+    logger.info(f"🌐 Frontend URL: {settings.FRONTEND_URL}")
+    logger.info(f"📁 Cache Directory: {settings.CACHE_DIR}")
+    logger.info("✅ Configuration loaded successfully")
+except Exception as e:
+    logger.error(f"❌ Configuration validation failed: {e}")
+    raise
+
+# Validate configuration on startup
+try:
+    logger.info(f"Starting FastAPI application with database: {settings.database_url[:50]}...")
+    logger.info(f"Frontend URL configured: {settings.FRONTEND_URL}")
+    logger.info("Configuration loaded successfully")
+except Exception as e:
+    logger.error(f"Configuration validation failed: {e}")
+    raise
+
+# Lifespan context manager for startup/shutdown events
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Manage application lifespan events."""
+    # Startup
+    logger.info("🚀 Starting LawVriksh API application...")
+
+    try:
+        # Validate system components
+        logger.info("🔧 Running startup validation...")
+
+        # Test database connection
+        from app.core.dependencies import get_db
+        db = next(get_db())
+        result = db.execute(text("SELECT 1")).fetchone()
+        if result:
+            logger.info("✅ Database connection validated")
+        db.close()
+
+        # Start background email processor
+        logger.info("📧 Starting background email processor...")
+        await start_background_email_processor()
+        logger.info("✅ Background email processor started")
+
+        logger.info("🎉 Application startup completed successfully!")
+
+    except Exception as e:
+        logger.error(f"❌ Startup validation failed: {e}")
+        raise
+
+    yield  # Application runs here
+
+    # Shutdown
+    logger.info("🛑 Shutting down LawVriksh API application...")
+
+    try:
+        # Stop background email processor
+        logger.info("📧 Stopping background email processor...")
+        await stop_background_email_processor()
+        logger.info("✅ Background email processor stopped")
+
+        logger.info("✅ Application shutdown completed successfully!")
+
+    except Exception as e:
+        logger.error(f"❌ Shutdown error: {e}")
+
+
+# Create FastAPI app with enhanced metadata and lifespan
 app = FastAPI(
     title="Lawvriksh Referral Platform API",
     description="A comprehensive referral platform for legal services with social sharing and gamification",
     version="1.0.0",
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
+    lifespan=lifespan
 )
+
+# Old startup event handler removed - now using lifespan context manager
 
 # Setup error handlers
 setup_error_handlers(app)
@@ -115,6 +188,7 @@ app.include_router(async_leaderboard.router)  # Async leaderboard for 2-3x perfo
 app.include_router(admin.router)
 app.include_router(campaigns.router)
 app.include_router(feedback.router)
+app.include_router(email_queue.router)  # Email queue management API
 
 @app.get("/health")
 def health_check():

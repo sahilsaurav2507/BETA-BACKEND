@@ -1,0 +1,535 @@
+{
+  "export_timestamp": "2025-07-25T15:05:32.564931",
+  "exported_by_admin": "sahilsaurav2507@gmail.com",
+  "total_users_exported": 25,
+  "note": "Feedback data is preserved in the database with user_id set to NULL",
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "total_points": 9,
+      "shares_count": 3,
+      "default_rank": null,
+      "current_rank": null,
+      "is_active": true,
+      "created_at": "2025-07-23T16:24:33",
+      "updated_at": "2025-07-23T16:24:33",
+      "share_events": [
+        {
+          "id": 1,
+          "platform": "twitter",
+          "points_earned": 1,
+          "created_at": "2025-07-23T16:24:33"
+        },
+        {
+          "id": 2,
+          "platform": "facebook",
+          "points_earned": 3,
+          "created_at": "2025-07-23T16:24:33"
+        },
+        {
+          "id": 3,
+          "platform": "linkedin",
+          "points_earned": 5,
+          "created_at": "2025-07-23T16:24:33"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "total_points": 3,
+      "shares_count": 2,
+      "default_rank": null,
+      "current_rank": null,
+      "is_active": true,
+      "created_at": "2025-07-23T16:24:33",
+      "updated_at": "2025-07-23T16:24:33",
+      "share_events": [
+        {
+          "id": 4,
+          "platform": "instagram",
+          "points_earned": 2,
+          "created_at": "2025-07-23T16:24:33"
+        },
+        {
+          "id": 5,
+          "platform": "twitter",
+          "points_earned": 1,
+          "created_at": "2025-07-23T16:24:33"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 4,
+      "name": "Mike Johnson",
+      "email": "mike@example.com",
+      "total_points": 11,
+      "shares_count": 4,
+      "default_rank": null,
+      "current_rank": null,
+      "is_active": true,
+      "created_at": "2025-07-23T16:24:33",
+      "updated_at": "2025-07-23T16:24:33",
+      "share_events": [
+        {
+          "id": 6,
+          "platform": "facebook",
+          "points_earned": 3,
+          "created_at": "2025-07-23T16:24:33"
+        },
+        {
+          "id": 7,
+          "platform": "linkedin",
+          "points_earned": 5,
+          "created_at": "2025-07-23T16:24:33"
+        },
+        {
+          "id": 8,
+          "platform": "instagram",
+          "points_earned": 2,
+          "created_at": "2025-07-23T16:24:33"
+        },
+        {
+          "id": 9,
+          "platform": "twitter",
+          "points_earned": 1,
+          "created_at": "2025-07-23T16:24:33"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 5,
+      "name": "Sarah Wilson",
+      "email": "sarah@example.com",
+      "total_points": 8,
+      "shares_count": 2,
+      "default_rank": null,
+      "current_rank": null,
+      "is_active": true,
+      "created_at": "2025-07-23T16:24:33",
+      "updated_at": "2025-07-23T16:24:33",
+      "share_events": [
+        {
+          "id": 10,
+          "platform": "facebook",
+          "points_earned": 3,
+          "created_at": "2025-07-23T16:24:33"
+        },
+        {
+          "id": 11,
+          "platform": "linkedin",
+          "points_earned": 5,
+          "created_at": "2025-07-23T16:24:33"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 6,
+      "name": "Sahil Saurav",
+      "email": "sahilsaurdddav2507@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 5,
+      "current_rank": 5,
+      "is_active": true,
+      "created_at": "2025-07-23T10:54:59",
+      "updated_at": "2025-07-23T16:24:58",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 7,
+      "name": "Sahil Saurav",
+      "email": "sahilsaurddddav2507@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 6,
+      "current_rank": 6,
+      "is_active": true,
+      "created_at": "2025-07-23T10:55:35",
+      "updated_at": "2025-07-23T16:25:34",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 8,
+      "name": "Test User",
+      "email": "test@example.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 7,
+      "current_rank": 7,
+      "is_active": true,
+      "created_at": "2025-07-23T10:57:23",
+      "updated_at": "2025-07-23T16:27:23",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 9,
+      "name": "New Test User",
+      "email": "newtest@example.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 8,
+      "current_rank": 8,
+      "is_active": true,
+      "created_at": "2025-07-23T10:58:21",
+      "updated_at": "2025-07-23T16:28:20",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 10,
+      "name": "CORS Test User",
+      "email": "corstest@example.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 9,
+      "current_rank": 9,
+      "is_active": true,
+      "created_at": "2025-07-23T10:59:42",
+      "updated_at": "2025-07-23T16:29:42",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 11,
+      "name": "Fix Test User",
+      "email": "fixtest@example.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 10,
+      "current_rank": 10,
+      "is_active": true,
+      "created_at": "2025-07-23T11:02:23",
+      "updated_at": "2025-07-23T16:32:22",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 12,
+      "name": "Final Test User",
+      "email": "finaltest@example.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 11,
+      "current_rank": 11,
+      "is_active": true,
+      "created_at": "2025-07-23T11:03:20",
+      "updated_at": "2025-07-23T16:33:19",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 13,
+      "name": "Sahil Saurav",
+      "email": "sahreerilsaurav2507@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 12,
+      "current_rank": 12,
+      "is_active": true,
+      "created_at": "2025-07-23T11:03:49",
+      "updated_at": "2025-07-23T16:33:49",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 14,
+      "name": "Async Test User",
+      "email": "asynctest@example.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 13,
+      "current_rank": 13,
+      "is_active": true,
+      "created_at": "2025-07-23T11:05:16",
+      "updated_at": "2025-07-23T16:35:16",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 15,
+      "name": "Sahil Saurav",
+      "email": "sahilsaurawdav2507@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 14,
+      "current_rank": 14,
+      "is_active": true,
+      "created_at": "2025-07-23T11:06:30",
+      "updated_at": "2025-07-23T16:36:30",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 16,
+      "name": "Clean Test User",
+      "email": "cleantest@example.com",
+      "total_points": 11,
+      "shares_count": 4,
+      "default_rank": 15,
+      "current_rank": 2,
+      "is_active": true,
+      "created_at": "2025-07-23T11:10:04",
+      "updated_at": "2025-07-23T17:03:01",
+      "share_events": [
+        {
+          "id": 16,
+          "platform": "facebook",
+          "points_earned": 3,
+          "created_at": "2025-07-23T11:17:33"
+        },
+        {
+          "id": 17,
+          "platform": "twitter",
+          "points_earned": 1,
+          "created_at": "2025-07-23T11:18:07"
+        },
+        {
+          "id": 18,
+          "platform": "linkedin",
+          "points_earned": 5,
+          "created_at": "2025-07-23T11:19:25"
+        },
+        {
+          "id": 22,
+          "platform": "instagram",
+          "points_earned": 2,
+          "created_at": "2025-07-23T11:33:02"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 17,
+      "name": "Sahil Saurav",
+      "email": "sahilsauravthrt2507@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 16,
+      "current_rank": 16,
+      "is_active": true,
+      "created_at": "2025-07-23T11:11:27",
+      "updated_at": "2025-07-23T16:41:26",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 18,
+      "name": "Sahil Saurav",
+      "email": "sahilsaurawefwev2507@gmail.com",
+      "total_points": 11,
+      "shares_count": 4,
+      "default_rank": 17,
+      "current_rank": 1,
+      "is_active": true,
+      "created_at": "2025-07-23T11:11:42",
+      "updated_at": "2025-07-23T16:42:01",
+      "share_events": [
+        {
+          "id": 12,
+          "platform": "linkedin",
+          "points_earned": 5,
+          "created_at": "2025-07-23T11:11:50"
+        },
+        {
+          "id": 13,
+          "platform": "instagram",
+          "points_earned": 2,
+          "created_at": "2025-07-23T11:11:56"
+        },
+        {
+          "id": 14,
+          "platform": "facebook",
+          "points_earned": 3,
+          "created_at": "2025-07-23T11:11:58"
+        },
+        {
+          "id": 15,
+          "platform": "twitter",
+          "points_earned": 1,
+          "created_at": "2025-07-23T11:12:02"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 19,
+      "name": "Sahil Saurav",
+      "email": "sahilsaurav250dds7@gmail.com",
+      "total_points": 110,
+      "shares_count": 3,
+      "default_rank": 18,
+      "current_rank": 1,
+      "is_active": true,
+      "created_at": "2025-07-23T11:23:39",
+      "updated_at": "2025-07-23T16:54:10",
+      "share_events": [
+        {
+          "id": 19,
+          "platform": "linkedin",
+          "points_earned": 50,
+          "created_at": "2025-07-23T11:23:55"
+        },
+        {
+          "id": 20,
+          "platform": "facebook",
+          "points_earned": 35,
+          "created_at": "2025-07-23T11:24:03"
+        },
+        {
+          "id": 21,
+          "platform": "twitter",
+          "points_earned": 25,
+          "created_at": "2025-07-23T11:24:10"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 20,
+      "name": "Prabhjot122",
+      "email": "sahilsa43furav2507@gmail.com",
+      "total_points": 140,
+      "shares_count": 4,
+      "default_rank": 19,
+      "current_rank": 1,
+      "is_active": true,
+      "created_at": "2025-07-23T11:34:40",
+      "updated_at": "2025-07-23T17:05:08",
+      "share_events": [
+        {
+          "id": 23,
+          "platform": "facebook",
+          "points_earned": 35,
+          "created_at": "2025-07-23T11:34:51"
+        },
+        {
+          "id": 24,
+          "platform": "linkedin",
+          "points_earned": 50,
+          "created_at": "2025-07-23T11:34:57"
+        },
+        {
+          "id": 25,
+          "platform": "twitter",
+          "points_earned": 25,
+          "created_at": "2025-07-23T11:35:01"
+        },
+        {
+          "id": 26,
+          "platform": "instagram",
+          "points_earned": 30,
+          "created_at": "2025-07-23T11:35:08"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 21,
+      "name": "Sahil Saurav",
+      "email": "lawvriksh@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 20,
+      "current_rank": 20,
+      "is_active": true,
+      "created_at": "2025-07-23T14:59:36",
+      "updated_at": "2025-07-23T20:29:35",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 22,
+      "name": "Prabhjot Jaswal",
+      "email": "sahilsaurav250gr7@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 21,
+      "current_rank": 21,
+      "is_active": true,
+      "created_at": "2025-07-25T13:52:50",
+      "updated_at": "2025-07-25T19:22:50",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 23,
+      "name": "Sahil Saurav",
+      "email": "sahilsaurav2t507@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 22,
+      "current_rank": 22,
+      "is_active": true,
+      "created_at": "2025-07-25T14:03:37",
+      "updated_at": "2025-07-25T19:33:36",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 26,
+      "name": "Prabhjot122",
+      "email": "sahilsauraghv2507@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 23,
+      "current_rank": 23,
+      "is_active": true,
+      "created_at": "2025-07-25T14:05:35",
+      "updated_at": "2025-07-25T19:35:34",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 27,
+      "name": "LawVriksh",
+      "email": "sahilsaurajv2507@gmail.com",
+      "total_points": 80,
+      "shares_count": 2,
+      "default_rank": 24,
+      "current_rank": 3,
+      "is_active": true,
+      "created_at": "2025-07-25T14:06:07",
+      "updated_at": "2025-07-25T19:36:40",
+      "share_events": [
+        {
+          "id": 27,
+          "platform": "instagram",
+          "points_earned": 30,
+          "created_at": "2025-07-25T14:06:23"
+        },
+        {
+          "id": 28,
+          "platform": "linkedin",
+          "points_earned": 50,
+          "created_at": "2025-07-25T14:06:41"
+        }
+      ],
+      "feedback_responses": []
+    },
+    {
+      "id": 31,
+      "name": "prabhjot jaswal",
+      "email": "prabhjotjaswal09@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 25,
+      "current_rank": 25,
+      "is_active": true,
+      "created_at": "2025-07-25T14:23:10",
+      "updated_at": "2025-07-25T19:53:09",
+      "share_events": [],
+      "feedback_responses": []
+    }
+  ]
+}

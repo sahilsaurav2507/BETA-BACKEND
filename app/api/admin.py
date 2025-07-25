@@ -1,9 +1,14 @@
 import logging
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+import json
+import os
+from fastapi import APIRouter, Depends, HTTPException, status, Query, Response
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from app.core.dependencies import get_db
 from app.schemas.admin import AdminDashboardResponse, AdminUsersResponse, AdminUser
 from app.models.user import User
+from app.models.share import ShareEvent
+from app.models.feedback import Feedback
 from fastapi.security import OAuth2PasswordBearer
 from datetime import datetime, timedelta
 from app.services.user_service import authenticate_user, create_jwt_for_user, get_user_by_id, promote_user_to_admin, get_bulk_email_recipients
@@ -360,4 +365,132 @@ def promote_user(req: PromoteRequest, db: Session = Depends(get_db), admin=Depen
     user = promote_user_to_admin(db, req.user_id)
     inc_admin_promotion()
     logging.info(f"Admin {admin['user_id']} promoted user {user.email} to admin.")
-    return {"message": f"User {user.email} promoted to admin."} 
+    return {"message": f"User {user.email} promoted to admin."}
+
+@router.post("/delete-all-users")
+def delete_all_users(db: Session = Depends(get_db), admin=Depends(get_current_admin)):
+    """
+    Delete all non-admin users and their related data.
+    Automatically exports user data to JSON before deletion.
+    """
+    try:
+        # Get all non-admin users with their related data
+        users = db.query(User).filter(User.is_admin == False).all()
+
+        if not users:
+            raise HTTPException(status_code=404, detail="No non-admin users found to delete")
+
+        # Prepare export data
+        export_data = {
+            "export_timestamp": datetime.utcnow().isoformat(),
+            "exported_by_admin": admin.get('email', 'unknown'),
+            "total_users_exported": len(users),
+            "note": "Feedback data is preserved in the database with user_id set to NULL",
+            "users": []
+        }
+
+        # Collect user data with their share events and feedback
+        for user in users:
+            # Get user's share events
+            share_events = db.query(ShareEvent).filter(ShareEvent.user_id == user.id).all()
+
+            # Get user's feedback (will be preserved with user_id set to NULL)
+            feedback_responses = db.query(Feedback).filter(Feedback.user_id == user.id).all()
+
+            user_data = {
+                "id": user.id,
+                "name": user.name,
+                "email": user.email,
+                "total_points": user.total_points,
+                "shares_count": user.shares_count,
+                "default_rank": user.default_rank,
+                "current_rank": user.current_rank,
+                "is_active": user.is_active,
+                "created_at": user.created_at.isoformat() if user.created_at else None,
+                "updated_at": user.updated_at.isoformat() if user.updated_at else None,
+                "share_events": [
+                    {
+                        "id": event.id,
+                        "platform": event.platform.value if hasattr(event.platform, 'value') else str(event.platform),
+                        "points_earned": event.points_earned,
+                        "created_at": event.created_at.isoformat() if event.created_at else None
+                    }
+                    for event in share_events
+                ],
+                "feedback_responses": [
+                    {
+                        "id": feedback.id,
+                        "email": feedback.email,
+                        "name": feedback.name,
+                        "biggest_hurdle": feedback.biggest_hurdle.value if hasattr(feedback.biggest_hurdle, 'value') else str(feedback.biggest_hurdle),
+                        "biggest_hurdle_other": feedback.biggest_hurdle_other,
+                        "primary_motivation": feedback.primary_motivation.value if feedback.primary_motivation and hasattr(feedback.primary_motivation, 'value') else str(feedback.primary_motivation) if feedback.primary_motivation else None,
+                        "time_consuming_part": feedback.time_consuming_part.value if feedback.time_consuming_part and hasattr(feedback.time_consuming_part, 'value') else str(feedback.time_consuming_part) if feedback.time_consuming_part else None,
+                        "professional_fear": feedback.professional_fear.value if hasattr(feedback.professional_fear, 'value') else str(feedback.professional_fear),
+                        "monetization_considerations": feedback.monetization_considerations,
+                        "professional_legacy": feedback.professional_legacy,
+                        "platform_impact": feedback.platform_impact,
+                        "submitted_at": feedback.submitted_at.isoformat() if feedback.submitted_at else None,
+                        "note": "This feedback will be preserved in database with user_id set to NULL"
+                    }
+                    for feedback in feedback_responses
+                ]
+            }
+            export_data["users"].append(user_data)
+
+        # Create export file
+        timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        filename = f"users_backup_{timestamp}.json"
+
+        # Save to cache directory (or any accessible directory)
+        cache_dir = "./cache"
+        if not os.path.exists(cache_dir):
+            os.makedirs(cache_dir)
+
+        filepath = os.path.join(cache_dir, filename)
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(export_data, f, indent=2, ensure_ascii=False)
+
+        # Delete share events first (foreign key constraints)
+        total_share_events = 0
+        total_feedback_responses = 0
+
+        for user in users:
+            share_events = db.query(ShareEvent).filter(ShareEvent.user_id == user.id).all()
+            total_share_events += len(share_events)
+            for event in share_events:
+                db.delete(event)
+
+            # Count feedback responses (these will be preserved with user_id set to NULL)
+            feedback_count = db.query(Feedback).filter(Feedback.user_id == user.id).count()
+            total_feedback_responses += feedback_count
+
+        # Delete users (feedback will automatically have user_id set to NULL due to ondelete="SET NULL")
+        for user in users:
+            db.delete(user)
+
+        # Commit all deletions
+        db.commit()
+
+        logging.info(f"Admin {admin.get('email', 'unknown')} deleted {len(users)} non-admin users and {total_share_events} share events. {total_feedback_responses} feedback responses preserved. Data exported to {filename}")
+
+        # Return the JSON data for download
+        return JSONResponse(
+            content={
+                "message": f"Successfully deleted {len(users)} users and {total_share_events} share events. {total_feedback_responses} feedback responses preserved in database.",
+                "export_file": filename,
+                "export_data": export_data
+            },
+            headers={
+                "Content-Disposition": f"attachment; filename={filename}",
+                "X-Export-Filename": filename
+            }
+        )
+
+    except Exception as e:
+        db.rollback()
+        logging.error(f"Error in delete_all_users: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to delete users: {str(e)}"
+        )

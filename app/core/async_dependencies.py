@@ -23,6 +23,7 @@ from app.core.config import settings
 try:
     from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
     from sqlalchemy.pool import NullPool  # Use NullPool for async engines
+    from sqlalchemy import text
     ASYNC_SQLALCHEMY_AVAILABLE = True
     logger = logging.getLogger(__name__)
     logger.info("Async SQLAlchemy available - async features enabled")
@@ -150,7 +151,7 @@ class AsyncDatabaseManager:
         """
         try:
             async with self.session_factory() as session:
-                result = await session.execute("SELECT 1")
+                result = await session.execute(text("SELECT 1"))
                 return result.scalar() == 1
         except Exception as e:
             logger.error(f"Async database health check failed: {e}")

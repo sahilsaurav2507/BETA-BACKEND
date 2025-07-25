@@ -1,0 +1,36 @@
+{
+  "export_timestamp": "2025-07-25T18:52:57.346336",
+  "exported_by_admin": "sahilsaurav2507@gmail.com",
+  "total_users_exported": 2,
+  "note": "Feedback data is preserved in the database with user_id set to NULL",
+  "users": [
+    {
+      "id": 57,
+      "name": "Prabhjot Jaswal",
+      "email": "prabhjotjaswal09@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 1,
+      "current_rank": 1,
+      "is_active": true,
+      "created_at": "2025-07-25T18:26:09",
+      "updated_at": "2025-07-25T23:56:08",
+      "share_events": [],
+      "feedback_responses": []
+    },
+    {
+      "id": 59,
+      "name": "Prabhjot122",
+      "email": "prabhjotjaswal11@gmail.com",
+      "total_points": 0,
+      "shares_count": 0,
+      "default_rank": 2,
+      "current_rank": 2,
+      "is_active": true,
+      "created_at": "2025-07-25T18:40:40",
+      "updated_at": "2025-07-26T00:10:39",
+      "share_events": [],
+      "feedback_responses": []
+    }
+  ]
+}

@@ -6,9 +6,15 @@ from app.schemas.token import Token
 from app.services.user_service import create_user, authenticate_user, create_jwt_for_user, get_user_by_email
 from app.core.security import verify_access_token
 from fastapi.security import OAuth2PasswordBearer
-from app.tasks.email_tasks import send_5_minute_welcome_email_task
 from app.utils.monitoring import inc_user_signup
 from app.utils.registration_manager import registration_manager
+
+# Database-driven email queue imports (replaces Celery)
+from app.models.email_queue import EmailType
+from app.schemas.email_queue import EmailQueueCreate
+from app.services.email_queue_service import (
+    add_email_to_queue, get_next_schedule_info, add_campaign_emails_for_user
+)
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
@@ -33,17 +39,23 @@ def _process_user_registration(user_data: dict) -> dict:
         user_in = UserCreate(**user_data)
         user = create_user(db, user_in)
 
-        # Send welcome email with 5-minute delay
+        # Add welcome email to database queue (replaces Celery)
         try:
-            send_5_minute_welcome_email_task.apply_async(
-                args=[user.email, user.name],
-                countdown=300  # 5-minute delay
+            email_data = EmailQueueCreate(
+                user_email=user.email,
+                user_name=user.name,
+                email_type=EmailType.welcome
             )
+            email_queue_entry = add_email_to_queue(db, email_data)
+
             import logging
-            logging.getLogger(__name__).info(f"Welcome email scheduled for {user.email} in 5 minutes")
+            logging.getLogger(__name__).info(
+                f"Welcome email queued for {user.email} "
+                f"(ID: {email_queue_entry.id}, scheduled: {email_queue_entry.scheduled_time})"
+            )
         except Exception as email_error:
             import logging
-            logging.getLogger(__name__).warning(f"Failed to schedule welcome email: {email_error}")
+            logging.getLogger(__name__).warning(f"Failed to queue welcome email: {email_error}")
 
         # Update metrics
         inc_user_signup()
@@ -90,18 +102,30 @@ def signup(user_in: UserCreate, db: Session = Depends(get_db)):
         # Create new user directly (simplified approach)
         user = create_user(db, user_in)
 
-        # Send welcome email with 5-minute delay (temporarily disabled)
+        # Add welcome email to database queue (replaces Celery system)
         try:
-            # Temporarily disabled until Celery/Redis is properly configured
-            # send_5_minute_welcome_email_task.apply_async(
-            #     args=[user.email, user.name],
-            #     countdown=300  # 5-minute delay
-            # )
+            email_data = EmailQueueCreate(
+                user_email=user.email,
+                user_name=user.name,
+                email_type=EmailType.welcome
+            )
+            email_queue_entry = add_email_to_queue(db, email_data)
+
+            # Also add future campaign emails for this new user
+            campaign_emails = add_campaign_emails_for_user(db, user.email, user.name)
+
             import logging
-            logging.getLogger(__name__).info(f"Welcome email would be scheduled for {user.email} (currently disabled)")
+            logger = logging.getLogger(__name__)
+            logger.info(
+                f"Welcome email queued for {user.email} "
+                f"(Queue ID: {email_queue_entry.id}, scheduled: {email_queue_entry.scheduled_time})"
+            )
+            logger.info(f"Added {len(campaign_emails)} future campaign emails for {user.email}")
+
         except Exception as email_error:
             import logging
-            logging.getLogger(__name__).warning(f"Failed to schedule welcome email: {email_error}")
+            logging.getLogger(__name__).warning(f"Failed to queue emails: {email_error}")
+            # Note: Emails will be processed by the email_processor.py daemon
 
         # Update metrics
         inc_user_signup()

@@ -3,10 +3,36 @@ from celery import Celery
 from app.services.email_service import send_welcome_email, send_bulk_email
 from app.core.config import settings
 
-celery_app = Celery(
-    "tasks",
-    broker=settings.RABBITMQ_URL,
-    backend='rpc://'  # Use RPC backend for development
+# Configure Celery with Redis (fallback to RabbitMQ if Redis not available)
+try:
+    # Try Redis first
+    celery_app = Celery(
+        "lawvriksh_tasks",
+        broker=settings.CELERY_BROKER_URL,
+        backend=settings.CELERY_RESULT_BACKEND
+    )
+    logging.info("Celery configured with Redis broker")
+except Exception as e:
+    # Fallback to RabbitMQ
+    celery_app = Celery(
+        "lawvriksh_tasks",
+        broker=settings.RABBITMQ_URL,
+        backend='rpc://'
+    )
+    logging.warning(f"Redis not available, using RabbitMQ fallback: {e}")
+
+# Celery configuration
+celery_app.conf.update(
+    task_serializer='json',
+    accept_content=['json'],
+    result_serializer='json',
+    timezone='Asia/Kolkata',
+    enable_utc=True,
+    task_track_started=True,
+    task_time_limit=30 * 60,  # 30 minutes
+    task_soft_time_limit=25 * 60,  # 25 minutes
+    worker_prefetch_multiplier=1,
+    worker_max_tasks_per_child=1000,
 )
 
 @celery_app.task(bind=True, max_retries=3)

@@ -113,12 +113,18 @@ class RawSQLService:
         
         try:
             sql = text("""
-                SELECT rank_position FROM (
-                    SELECT 
+                SELECT final_rank as rank_position FROM (
+                    SELECT
                         u.id,
+                        u.total_points,
+                        u.default_rank,
                         ROW_NUMBER() OVER (
                             ORDER BY u.total_points DESC, u.created_at ASC
-                        ) as rank_position
+                        ) as calculated_rank,
+                        CASE
+                            WHEN u.total_points = 0 THEN COALESCE(u.default_rank, ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC))
+                            ELSE ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC)
+                        END as final_rank
                     FROM users u
                     WHERE u.is_admin = FALSE
                 ) ranked_users
@@ -160,20 +166,25 @@ class RawSQLService:
                         u.name,
                         u.total_points,
                         u.shares_count,
+                        u.default_rank,
                         ROW_NUMBER() OVER (
                             ORDER BY u.total_points DESC, u.created_at ASC
-                        ) as rank_position
+                        ) as calculated_rank,
+                        CASE
+                            WHEN u.total_points = 0 THEN COALESCE(u.default_rank, ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC))
+                            ELSE ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC)
+                        END as final_rank
                     FROM users u
                     WHERE u.is_admin = FALSE
                 ),
                 target_user AS (
-                    SELECT rank_position
+                    SELECT final_rank as rank_position
                     FROM ranked_users
                     WHERE id = :user_id
                     LIMIT 1
                 )
                 SELECT
-                    ru.rank_position as `rank`,
+                    ru.final_rank as `rank`,
                     ru.id as user_id,
                     ru.name,
                     ru.total_points as points,
@@ -181,12 +192,12 @@ class RawSQLService:
                     CASE WHEN ru.id = :user_id THEN TRUE ELSE FALSE END as is_current_user
                 FROM ranked_users ru
                 CROSS JOIN target_user tu
-                WHERE ru.rank_position >= CASE
+                WHERE ru.final_rank >= CASE
                     WHEN tu.rank_position <= :range_size THEN 1
                     ELSE tu.rank_position - :range_size
                 END
-                AND ru.rank_position <= tu.rank_position + :range_size
-                ORDER BY ru.rank_position
+                AND ru.final_rank <= tu.rank_position + :range_size
+                ORDER BY ru.final_rank
             """)
             
             result = db.execute(sql, {
@@ -219,50 +230,60 @@ class RawSQLService:
     def get_user_stats_raw(db: Session, user_id: int) -> Optional[Dict[str, Any]]:
         """
         Get comprehensive user statistics using raw SQL.
-        
+
         Args:
             db: Database session
             user_id: User ID
-            
+
         Returns:
             User statistics dictionary
         """
         start_time = time.time()
-        
+
         try:
             sql = text("""
                 WITH user_rank AS (
-                    SELECT 
+                    SELECT
                         u.id,
                         u.name,
                         u.total_points,
                         u.shares_count,
                         u.created_at,
+                        u.default_rank,
+                        u.current_rank,
                         ROW_NUMBER() OVER (
                             ORDER BY u.total_points DESC, u.created_at ASC
-                        ) as current_rank,
+                        ) as calculated_rank,
                         COUNT(*) OVER () as total_users
                     FROM users u
                     WHERE u.is_admin = FALSE
                 ),
+                user_with_rank AS (
+                    SELECT
+                        ur.*,
+                        CASE
+                            WHEN ur.total_points = 0 THEN COALESCE(ur.default_rank, ur.calculated_rank)
+                            ELSE ur.calculated_rank
+                        END as final_rank
+                    FROM user_rank ur
+                    WHERE ur.id = :user_id
+                ),
                 next_rank_points AS (
-                    SELECT 
-                        ur1.total_points as current_points,
-                        COALESCE(ur2.total_points, ur1.total_points) as next_rank_points
-                    FROM user_rank ur1
-                    LEFT JOIN user_rank ur2 ON ur2.current_rank = ur1.current_rank - 1
-                    WHERE ur1.id = :user_id
+                    SELECT
+                        uwr.total_points as current_points,
+                        COALESCE(ur2.total_points, uwr.total_points) as next_rank_points
+                    FROM user_with_rank uwr
+                    LEFT JOIN user_rank ur2 ON ur2.calculated_rank = uwr.final_rank - 1
                 )
-                SELECT 
-                    ur.current_rank as rank,
-                    ur.total_points as points,
-                    ur.shares_count,
+                SELECT
+                    uwr.final_rank as `rank`,
+                    uwr.total_points as points,
+                    uwr.shares_count,
                     GREATEST(0, nrp.next_rank_points - nrp.current_points + 1) as points_to_next_rank,
-                    ROUND(((ur.total_users - ur.current_rank + 1) * 100.0 / ur.total_users), 1) as percentile,
-                    ur.total_users
-                FROM user_rank ur
+                    ROUND(((uwr.total_users - uwr.final_rank + 1) * 100.0 / uwr.total_users), 1) as percentile,
+                    uwr.total_users
+                FROM user_with_rank uwr
                 JOIN next_rank_points nrp ON 1=1
-                WHERE ur.id = :user_id
             """)
             
             result = db.execute(sql, {"user_id": user_id})
@@ -536,12 +557,18 @@ class AsyncRawSQLService:
 
         try:
             sql = text("""
-                SELECT rank_position FROM (
+                SELECT final_rank as rank_position FROM (
                     SELECT
                         u.id,
+                        u.total_points,
+                        u.default_rank,
                         ROW_NUMBER() OVER (
                             ORDER BY u.total_points DESC, u.created_at ASC
-                        ) as rank_position
+                        ) as calculated_rank,
+                        CASE
+                            WHEN u.total_points = 0 THEN COALESCE(u.default_rank, ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC))
+                            ELSE ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC)
+                        END as final_rank
                     FROM users u
                     WHERE u.is_admin = FALSE
                 ) ranked_users
@@ -582,27 +609,32 @@ class AsyncRawSQLService:
                         u.id,
                         u.name,
                         u.total_points,
+                        u.default_rank,
                         ROW_NUMBER() OVER (
                             ORDER BY u.total_points DESC, u.created_at ASC
-                        ) as rank_position
+                        ) as calculated_rank,
+                        CASE
+                            WHEN u.total_points = 0 THEN COALESCE(u.default_rank, ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC))
+                            ELSE ROW_NUMBER() OVER (ORDER BY u.total_points DESC, u.created_at ASC)
+                        END as final_rank
                     FROM users u
                     WHERE u.is_admin = FALSE
                 ),
                 target_user AS (
-                    SELECT rank_position
+                    SELECT final_rank as rank_position
                     FROM ranked_users
                     WHERE id = :user_id
                 )
                 SELECT
-                    ru.rank_position as rank,
+                    ru.final_rank as `rank`,
                     ru.name,
                     ru.total_points as points,
                     CASE WHEN ru.id = :user_id THEN TRUE ELSE FALSE END as is_current_user
                 FROM ranked_users ru, target_user tu
-                WHERE ru.rank_position BETWEEN
+                WHERE ru.final_rank BETWEEN
                     GREATEST(1, tu.rank_position - :range_size) AND
                     tu.rank_position + :range_size
-                ORDER BY ru.rank_position
+                ORDER BY ru.final_rank
             """)
 
             result = await session.execute(sql, {

@@ -31,6 +31,7 @@ CACHE_DIR=./cache
 
 import os
 import secrets
+import logging
 from pathlib import Path
 from typing import Optional
 from pydantic import Field, validator
@@ -61,6 +62,16 @@ class Settings(BaseSettings):
 
     # Message Queue
     RABBITMQ_URL: str = "amqp://guest:guest@localhost:5672/"
+
+    # Redis Configuration
+    REDIS_HOST: str = "localhost"
+    REDIS_PORT: int = 6379
+    REDIS_PASSWORD: str = ""
+    REDIS_URL: str = "redis://localhost:6379/0"
+
+    # Celery Configuration (Background Tasks)
+    CELERY_BROKER_URL: str = "redis://localhost:6379/1"
+    CELERY_RESULT_BACKEND: str = "redis://localhost:6379/2"
 
     # Email Configuration
     EMAIL_FROM: str = "info@lawvriksh.com"
@@ -122,16 +133,65 @@ class Settings(BaseSettings):
     class Config:
         # Find .env file relative to this config file
         _current_dir = Path(__file__).parent.parent.parent  # Go up to backend/ directory
-        env_file = str(_current_dir / ".env")
+
+        # Try multiple possible .env file locations for Docker compatibility
+        possible_env_files = [
+            str(_current_dir / ".env.production"),  # Production environment
+            str(_current_dir / ".env"),             # Development environment
+            "/app/.env.production",                 # Docker absolute path
+            "/app/.env",                           # Docker absolute path
+        ]
+
+        # Find the first existing env file
+        env_file = None
+        for env_path in possible_env_files:
+            if Path(env_path).exists():
+                env_file = env_path
+                break
+
+        # If no env file found, use the first option as default
+        if env_file is None:
+            env_file = possible_env_files[0]
+
         case_sensitive = True
         # Allow extra fields for forward compatibility
         extra = "ignore"
 
 
+# Create settings instance with enhanced error handling
+def create_settings():
+    """Create settings instance with proper error handling and fallbacks."""
+    try:
+        settings = Settings()
+
+        # Validate critical settings
+        if not settings.database_url:
+            raise ValueError("Database configuration is missing or incomplete")
+
+        return settings
+
+    except Exception as e:
+        import logging
+        logger = logging.getLogger(__name__)
+
+        # Log the error but don't crash the application
+        logger.error(f"Configuration error: {e}")
+
+        # In production, we should fail fast, but provide better error info
+        if os.getenv('ENVIRONMENT') == 'production':
+            logger.error("Production environment detected. Configuration must be valid.")
+            logger.error("Please check your .env.production file and environment variables.")
+            raise
+        else:
+            # In development, provide helpful guidance
+            logger.warning("Development environment detected. Using fallback configuration.")
+            logger.warning("Please create a .env file with proper configuration.")
+
+            # Create minimal settings for development
+            return Settings(
+                DATABASE_URL="sqlite:///./test.db",  # Fallback to SQLite
+                JWT_SECRET_KEY=secrets.token_urlsafe(32)
+            )
+
 # Create settings instance
-try:
-    settings = Settings()
-except Exception as e:
-    print(f"Error loading configuration: {e}")
-    print("Please check your .env file or environment variables.")
-    raise
+settings = create_settings()

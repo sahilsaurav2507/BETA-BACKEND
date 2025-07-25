@@ -1,0 +1,403 @@
+2025-07-25 22:56:39,318 - __main__ - INFO - Database connection established
+2025-07-25 22:56:39,319 - __main__ - INFO - Starting email processor daemon (check_interval=30s, batch_size=5)
+2025-07-25 22:56:58,556 - __main__ - INFO - Database connection established
+2025-07-25 22:56:58,556 - __main__ - INFO - Starting email processor daemon (check_interval=30s, batch_size=5)
+2025-07-25 22:59:58,633 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:00:09,415 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:00:28,658 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:00:39,428 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:00:58,668 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:01:09,438 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:01:28,681 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:01:39,451 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:01:39,452 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:01:58,691 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:01:58,692 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:02:09,462 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:02:28,702 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:02:39,472 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:02:58,715 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:03:09,482 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:03:28,726 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:03:39,492 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:03:58,736 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:04:09,502 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:04:28,746 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:04:39,514 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:04:58,759 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:05:09,544 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:05:28,770 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:05:39,554 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:05:58,783 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:06:09,567 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:06:28,794 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:06:39,581 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:06:39,581 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:06:58,807 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:06:58,808 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:07:09,591 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:07:28,837 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:07:39,602 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:07:58,851 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:08:09,613 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:08:28,863 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:08:39,627 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:08:58,876 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:09:09,641 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:09:28,890 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:09:39,652 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:09:58,905 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:10:09,666 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:10:28,919 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:10:39,680 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:10:58,931 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:11:09,695 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:11:28,943 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:11:39,708 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:11:39,708 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:11:58,959 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:11:58,959 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:12:09,721 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:12:28,972 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:12:39,734 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:12:58,986 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:13:09,747 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:13:29,001 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:13:39,758 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:13:59,016 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:14:09,772 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:14:29,029 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:14:39,784 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:14:59,039 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:15:09,800 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:15:29,050 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:15:39,813 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:15:59,062 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:16:09,824 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:16:29,075 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:16:39,837 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:16:39,838 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:16:59,087 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:16:59,087 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:17:09,850 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:17:29,099 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:17:39,864 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:17:59,113 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:18:09,876 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:18:29,124 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:18:39,886 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:18:59,135 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:19:09,896 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:19:29,147 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:19:39,907 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:19:59,157 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:20:09,939 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:20:29,169 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:20:39,949 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:20:59,181 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:21:09,962 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:21:29,194 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:21:39,976 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:21:39,977 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:21:59,208 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:21:59,208 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:22:09,988 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:22:29,222 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:22:40,002 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:22:59,236 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:23:10,015 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:23:29,248 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:23:40,027 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:23:59,257 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:24:10,040 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:24:29,267 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:24:40,051 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:24:59,281 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:25:10,061 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:25:29,294 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:25:40,075 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:25:59,308 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:26:10,087 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:26:29,319 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:26:40,099 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:26:40,099 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:26:59,334 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:26:59,334 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:27:10,112 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:27:29,349 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:27:40,125 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:27:59,363 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:28:10,137 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:28:29,377 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:28:40,149 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:28:59,388 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:29:10,161 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:29:29,403 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:29:40,176 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:29:59,415 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:30:10,188 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:30:29,428 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:30:40,201 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:30:59,441 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:31:10,213 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:31:29,451 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:31:40,225 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:31:40,226 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:31:59,463 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:31:59,463 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:32:10,238 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:32:29,475 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:32:40,251 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:32:59,489 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:33:10,264 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:33:29,501 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:33:40,278 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:33:59,514 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:34:10,291 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:34:29,528 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:34:40,304 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:34:59,541 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:35:10,325 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:35:29,555 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:35:40,339 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:35:59,567 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:36:10,349 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:36:29,581 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:36:40,359 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:36:40,360 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:36:59,589 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:36:59,590 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:37:10,370 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:37:29,602 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:37:40,381 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:37:59,612 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:38:10,391 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:38:29,622 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:38:40,402 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:38:59,633 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:39:10,414 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:39:29,644 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:39:40,425 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:39:59,655 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:40:10,434 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:40:29,667 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:40:40,446 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:40:59,679 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:41:10,458 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:41:29,690 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:41:40,469 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:41:40,470 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:41:59,702 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:41:59,703 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:42:10,480 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:42:14,917 - __main__ - INFO - Database connection established
+2025-07-25 23:42:14,917 - __main__ - INFO - Running single batch processing (batch_size=10)
+2025-07-25 23:42:14,917 - __main__ - INFO - DRY RUN MODE: No emails will actually be sent
+2025-07-25 23:42:14,962 - __main__ - INFO - Processing emails for 1 email types
+2025-07-25 23:42:14,962 - __main__ - INFO - Processing 2 welcome emails
+2025-07-25 23:42:14,972 - app.services.email_queue_service - INFO - Email 2 status updated to processing
+2025-07-25 23:42:14,974 - __main__ - INFO - [DRY RUN] Would send welcome email to prabhjotjaswal09@gmail.com
+2025-07-25 23:42:14,979 - app.services.email_queue_service - INFO - Email 2 status updated to sent
+2025-07-25 23:42:14,980 - __main__ - INFO - Sent welcome email to prabhjotjaswal09@gmail.com
+2025-07-25 23:42:14,988 - app.services.email_queue_service - INFO - Email 3 status updated to processing
+2025-07-25 23:42:14,991 - __main__ - INFO - [DRY RUN] Would send welcome email to prabhjotjaswal11@gmail.com
+2025-07-25 23:42:14,996 - app.services.email_queue_service - INFO - Email 3 status updated to sent
+2025-07-25 23:42:14,997 - __main__ - INFO - Sent welcome email to prabhjotjaswal11@gmail.com
+2025-07-25 23:42:14,998 - __main__ - INFO - Processed 2 emails across 1 types
+2025-07-25 23:42:14,999 - __main__ - INFO -   welcome: 2 emails
+2025-07-25 23:42:14,999 - __main__ - INFO - Single batch completed: 2 emails processed in 0.1s
+2025-07-25 23:46:05,261 - __main__ - INFO - Database connection established
+2025-07-25 23:46:05,261 - __main__ - INFO - Running single batch processing (batch_size=5)
+2025-07-25 23:46:05,261 - __main__ - INFO - DRY RUN MODE: No emails will actually be sent
+2025-07-25 23:46:05,283 - __main__ - INFO - Single batch completed: 0 emails processed in 0.0s
+2025-07-25 23:46:40,581 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:46:59,813 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:49:15,545 - __main__ - INFO - Database connection established
+2025-07-25 23:49:15,545 - __main__ - INFO - Running single batch processing (batch_size=10)
+2025-07-25 23:49:15,564 - __main__ - INFO - Single batch completed: 0 emails processed in 0.0s
+2025-07-25 23:51:40,712 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:51:59,935 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:51:59,936 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:52:01,893 - __main__ - INFO - Database connection established
+2025-07-25 23:52:01,893 - __main__ - INFO - Running single batch processing (batch_size=5)
+2025-07-25 23:52:01,893 - __main__ - INFO - DRY RUN MODE: No emails will actually be sent
+2025-07-25 23:52:01,923 - __main__ - INFO - Processing emails for 1 email types
+2025-07-25 23:52:01,924 - __main__ - INFO - Processing 1 welcome emails
+2025-07-25 23:52:01,931 - app.services.email_queue_service - INFO - Email 45 status updated to processing
+2025-07-25 23:52:01,933 - __main__ - INFO - [DRY RUN] Would send welcome email to testqueue@example.com
+2025-07-25 23:52:01,938 - app.services.email_queue_service - INFO - Email 45 status updated to sent
+2025-07-25 23:52:01,940 - __main__ - INFO - Sent welcome email to testqueue@example.com
+2025-07-25 23:52:01,940 - __main__ - INFO - Processed 1 emails across 1 types
+2025-07-25 23:52:01,940 - __main__ - INFO -   welcome: 1 emails
+2025-07-25 23:52:01,940 - __main__ - INFO - Single batch completed: 1 emails processed in 0.0s
+2025-07-25 23:56:10,816 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:56:30,040 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:56:40,828 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:56:40,829 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:57:00,053 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:57:00,053 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-25 23:57:10,842 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:57:30,065 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:57:40,854 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:58:00,079 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:58:10,868 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:58:30,092 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:58:40,880 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:59:00,106 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:59:10,896 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:59:30,119 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-25 23:59:40,908 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:00:00,133 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:00:10,922 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:00:30,147 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:00:40,936 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:01:00,162 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:01:10,949 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:01:30,174 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:01:40,963 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:01:40,964 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:02:00,186 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:02:00,187 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:02:10,975 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:02:30,200 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:02:40,990 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:03:00,214 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:03:11,004 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:03:30,227 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:03:41,019 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:04:00,239 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:04:11,031 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:04:30,249 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:04:41,044 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:05:00,260 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:05:11,063 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:05:30,271 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:05:41,073 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:05:57,263 - email_processor - INFO - Processing emails for 1 email types
+2025-07-26 00:05:57,263 - email_processor - INFO - Processing 1 welcome emails
+2025-07-26 00:05:57,272 - app.services.email_queue_service - INFO - Email 49 status updated to processing
+2025-07-26 00:05:57,274 - email_processor - INFO - [DRY RUN] Would send welcome email to prabhjotjaswal09@gmail.com
+2025-07-26 00:05:57,279 - app.services.email_queue_service - INFO - Email 49 status updated to sent
+2025-07-26 00:05:57,280 - email_processor - INFO - Sent welcome email to prabhjotjaswal09@gmail.com
+2025-07-26 00:06:38,456 - __main__ - INFO - Database connection established
+2025-07-26 00:06:38,456 - __main__ - INFO - Running single batch processing (batch_size=5)
+2025-07-26 00:06:38,487 - __main__ - INFO - Single batch completed: 0 emails processed in 0.0s
+2025-07-26 00:06:41,095 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:07:00,303 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:07:26,168 - email_processor - INFO - Processing emails for 1 email types
+2025-07-26 00:07:26,168 - email_processor - INFO - Processing 1 welcome emails
+2025-07-26 00:07:26,174 - app.services.email_queue_service - INFO - Email 53 status updated to processing
+2025-07-26 00:07:51,779 - root - INFO - Email sent successfully to finaltest@example.com
+2025-07-26 00:07:51,779 - email_processor - INFO - Email sent successfully: welcome to finaltest@example.com
+2025-07-26 00:07:51,786 - app.services.email_queue_service - INFO - Email 53 status updated to sent
+2025-07-26 00:07:51,789 - email_processor - INFO - Sent welcome email to finaltest@example.com
+2025-07-26 00:08:27,778 - __main__ - INFO - Database connection established
+2025-07-26 00:08:27,778 - __main__ - INFO - Running single batch processing (batch_size=10)
+2025-07-26 00:08:27,816 - __main__ - INFO - Single batch completed: 0 emails processed in 0.0s
+2025-07-26 00:08:57,803 - __main__ - INFO - Database connection established
+2025-07-26 00:08:57,803 - __main__ - INFO - Starting email processor daemon (check_interval=30s, batch_size=5)
+2025-07-26 00:10:41,182 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:10:57,911 - __main__ - INFO - Processing emails for 1 email types
+2025-07-26 00:10:57,911 - __main__ - INFO - Processing 1 welcome emails
+2025-07-26 00:10:57,919 - app.services.email_queue_service - INFO - Email 54 status updated to processing
+2025-07-26 00:11:20,097 - root - INFO - Email sent successfully to prabhjotjaswal11@gmail.com
+2025-07-26 00:11:20,098 - __main__ - INFO - Email sent successfully: welcome to prabhjotjaswal11@gmail.com
+2025-07-26 00:11:20,117 - app.services.email_queue_service - INFO - Email 54 status updated to sent
+2025-07-26 00:11:20,119 - __main__ - INFO - Sent welcome email to prabhjotjaswal11@gmail.com
+2025-07-26 00:11:20,119 - __main__ - INFO - Processed 1 emails across 1 types
+2025-07-26 00:11:20,119 - __main__ - INFO -   welcome: 1 emails
+2025-07-26 00:11:20,120 - __main__ - INFO - Processed 1 emails in 22.2s
+2025-07-26 00:11:32,633 - email_processor - INFO - Processing emails for 1 email types
+2025-07-26 00:11:32,633 - email_processor - INFO - Processing 1 welcome emails
+2025-07-26 00:11:32,639 - app.services.email_queue_service - INFO - Email 58 status updated to processing
+2025-07-26 00:11:41,210 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:11:52,118 - root - INFO - Email sent successfully to finaltest@example.com
+2025-07-26 00:11:52,119 - email_processor - INFO - Email sent successfully: welcome to finaltest@example.com
+2025-07-26 00:11:52,138 - app.services.email_queue_service - INFO - Email 58 status updated to sent
+2025-07-26 00:11:52,139 - email_processor - INFO - Sent welcome email to finaltest@example.com
+2025-07-26 00:12:00,419 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:13:16,421 - email_processor - INFO - Processing emails for 1 email types
+2025-07-26 00:13:16,421 - email_processor - INFO - Processing 1 welcome emails
+2025-07-26 00:13:16,427 - app.services.email_queue_service - INFO - Email 60 status updated to processing
+2025-07-26 00:13:37,494 - root - INFO - Email sent successfully to finaltest@example.com
+2025-07-26 00:13:37,495 - email_processor - INFO - Email sent successfully: welcome to finaltest@example.com
+2025-07-26 00:13:37,525 - app.services.email_queue_service - INFO - Email 60 status updated to sent
+2025-07-26 00:13:37,527 - email_processor - INFO - Sent welcome email to finaltest@example.com
+2025-07-26 00:16:20,277 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:16:41,331 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:17:00,542 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:19:27,084 - __main__ - INFO - Received signal 2, initiating graceful shutdown...
+2025-07-26 00:19:27,364 - __main__ - INFO - Email processor daemon stopped
+2025-07-26 00:19:34,860 - app.services.background_email_processor - INFO - Background email processor cancelled
+2025-07-26 00:19:36,150 - app.utils.registration_manager - INFO - Round-robin registration manager initialized with 10 concurrent slots
+2025-07-26 00:19:36,171 - app.utils.enhanced_cache - INFO - Enhanced cache initialized with memory_size=1000, disk_cache_dir=./cache
+2025-07-26 00:19:36,194 - app.utils.precomputed_leaderboard - INFO - Starting initial precomputed leaderboard computation...
+2025-07-26 00:19:36,195 - app.utils.precomputed_leaderboard - INFO - Background leaderboard computation started
+2025-07-26 00:19:36,195 - app.core.dependencies - INFO - Initializing database engine...
+2025-07-26 00:19:36,195 - app.utils.precomputed_leaderboard - INFO - Precomputed leaderboard system initialized (max_pages=100, page_size=50)
+2025-07-26 00:19:36,195 - app.core.dependencies - INFO - Database engine initialized successfully
+2025-07-26 00:19:36,200 - app.utils.precomputed_leaderboard - INFO - Starting precomputed leaderboard computation
+2025-07-26 00:19:36,227 - app.utils.precomputed_leaderboard - INFO - Precomputed leaderboard computation completed in 0.027s
+2025-07-26 00:19:36,227 - app.utils.precomputed_leaderboard - INFO - Cached 1 pages, 2 user ranks, 6 around-me entries
+2025-07-26 00:19:36,227 - app.utils.precomputed_leaderboard - INFO - Initial precomputed leaderboard computation completed
+2025-07-26 00:19:36,309 - root - INFO - Celery configured with Redis broker
+2025-07-26 00:19:36,343 - app.core.async_dependencies - INFO - Async SQLAlchemy available - async features enabled
+2025-07-26 00:19:36,350 - app.core.async_dependencies - INFO - Async database engine initialized successfully
+2025-07-26 00:19:36,360 - app.utils.optimized_rate_limiter - INFO - Optimized rate limiter initialized
+2025-07-26 00:19:36,362 - app.utils.ultra_fast_rate_limiter - INFO - Ultra-fast O(1) rate limiter initialized
+2025-07-26 00:19:36,364 - app.middleware.compression - INFO - Compression middleware initialized (gzip_level=6, brotli_level=4, brotli_enabled=True)
+2025-07-26 00:19:36,372 - app.main - INFO - Starting FastAPI application with database: mysql+pymysql://root:pabbo%40123@localhost:3306/la...
+2025-07-26 00:19:36,372 - app.main - INFO - Frontend URL configured: http://localhost:3000
+2025-07-26 00:19:36,372 - app.main - INFO - Configuration loaded successfully
+2025-07-26 00:19:36,373 - app.core.error_handlers - INFO - Error handlers configured successfully
+2025-07-26 00:21:41,448 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:22:00,656 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:26:41,568 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:27:00,773 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:31:41,685 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:32:00,892 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:34:51,130 - app.services.email_queue_service - INFO - Found 1 welcome emails ready for immediate processing
+2025-07-26 00:34:51,135 - email_processor - INFO - Processing emails for 1 email types
+2025-07-26 00:34:51,135 - email_processor - INFO - Processing 1 welcome emails
+2025-07-26 00:34:51,140 - app.services.email_queue_service - INFO - Email 68 status updated to processing
+2025-07-26 00:34:51,142 - email_processor - INFO - [DRY RUN] Would send welcome email to immediate1@test.com
+2025-07-26 00:34:51,147 - app.services.email_queue_service - INFO - Email 68 status updated to sent
+2025-07-26 00:34:51,149 - email_processor - INFO - Sent welcome email to immediate1@test.com
+2025-07-26 00:35:58,287 - app.services.email_queue_service - INFO - Found 5 welcome emails ready for immediate processing
+2025-07-26 00:35:58,291 - email_processor - INFO - Processing emails for 1 email types
+2025-07-26 00:35:58,291 - email_processor - INFO - Processing 5 welcome emails
+2025-07-26 00:35:58,298 - app.services.email_queue_service - INFO - Email 69 status updated to processing
+2025-07-26 00:35:58,300 - email_processor - INFO - [DRY RUN] Would send welcome email to demo1@example.com
+2025-07-26 00:35:58,312 - app.services.email_queue_service - INFO - Email 69 status updated to sent
+2025-07-26 00:35:58,313 - email_processor - INFO - Sent welcome email to demo1@example.com
+2025-07-26 00:35:58,320 - app.services.email_queue_service - INFO - Email 70 status updated to processing
+2025-07-26 00:35:58,321 - email_processor - INFO - [DRY RUN] Would send welcome email to demo2@example.com
+2025-07-26 00:35:58,325 - app.services.email_queue_service - INFO - Email 70 status updated to sent
+2025-07-26 00:35:58,327 - email_processor - INFO - Sent welcome email to demo2@example.com
+2025-07-26 00:35:58,332 - app.services.email_queue_service - INFO - Email 71 status updated to processing
+2025-07-26 00:35:58,333 - email_processor - INFO - [DRY RUN] Would send welcome email to demo3@example.com
+2025-07-26 00:35:58,338 - app.services.email_queue_service - INFO - Email 71 status updated to sent
+2025-07-26 00:35:58,340 - email_processor - INFO - Sent welcome email to demo3@example.com
+2025-07-26 00:35:58,346 - app.services.email_queue_service - INFO - Email 72 status updated to processing
+2025-07-26 00:35:58,348 - email_processor - INFO - [DRY RUN] Would send welcome email to demo4@example.com
+2025-07-26 00:35:58,352 - app.services.email_queue_service - INFO - Email 72 status updated to sent
+2025-07-26 00:35:58,353 - email_processor - INFO - Sent welcome email to demo4@example.com
+2025-07-26 00:35:58,359 - app.services.email_queue_service - INFO - Email 73 status updated to processing
+2025-07-26 00:35:58,361 - email_processor - INFO - [DRY RUN] Would send welcome email to demo5@example.com
+2025-07-26 00:35:58,365 - app.services.email_queue_service - INFO - Email 73 status updated to sent
+2025-07-26 00:35:58,366 - email_processor - INFO - Sent welcome email to demo5@example.com
+2025-07-26 00:36:41,795 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:37:01,002 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:38:31,034 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:38:41,839 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 00:41:41,915 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:42:01,118 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:46:42,017 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:47:01,216 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:51:42,128 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:52:01,327 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:56:42,235 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:57:01,438 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 00:57:12,247 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
+2025-07-26 01:01:42,354 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 01:02:01,553 - __main__ - INFO - Email processor is running, no pending emails

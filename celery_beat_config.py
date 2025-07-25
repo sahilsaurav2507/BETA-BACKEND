@@ -23,12 +23,23 @@ from app.core.config import settings
 # IST timezone
 IST = pytz.timezone('Asia/Kolkata')
 
-# Create Celery app
-celery_app = Celery(
-    "lawvriksh_campaigns",
-    broker=settings.RABBITMQ_URL,
-    backend=settings.RABBITMQ_URL
-)
+# Create Celery app with Redis
+try:
+    # Try Redis first
+    celery_app = Celery(
+        "lawvriksh_campaigns",
+        broker=settings.CELERY_BROKER_URL,
+        backend=settings.CELERY_RESULT_BACKEND
+    )
+    print("✅ Celery Beat configured with Redis broker")
+except Exception as e:
+    # Fallback to RabbitMQ
+    celery_app = Celery(
+        "lawvriksh_campaigns",
+        broker=settings.RABBITMQ_URL,
+        backend=settings.RABBITMQ_URL
+    )
+    print(f"⚠️ Redis not available, using RabbitMQ fallback: {e}")
 
 # Import tasks
 from app.tasks.email_tasks import (

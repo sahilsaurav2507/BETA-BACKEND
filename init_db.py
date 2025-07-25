@@ -25,7 +25,7 @@ def init_database():
         print("✅ Database tables created successfully")
         
         # Import all models to ensure they're registered
-        from app.models import user, share  # This ensures all models are loaded
+        from app.models import user, share, email_queue  # This ensures all models are loaded
         
         print("✅ All models loaded successfully")
         

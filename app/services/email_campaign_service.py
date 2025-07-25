@@ -77,8 +77,10 @@ The LawVriksh Team
 ---
 🌐 Visit us: https://www.lawvriksh.com
 📧 Contact: info@lawvriksh.com
+
+📝 **Help us improve!** Please take a moment to share your feedback: www.lawvriksh.com/feedback
         """,
-        "schedule": datetime(2025, 7, 26, 14, 0, 0, tzinfo=IST)  # July 26, 2025, 2:00 PM IST
+        "schedule": datetime(2025, 7, 30, 14, 0, 0, tzinfo=IST)  # July 30, 2025, 2:00 PM IST (+4 days)
     },
     
     "portfolio_builder": {
@@ -100,8 +102,10 @@ The LawVriksh Team
 ---
 🌐 Visit us: https://www.lawvriksh.com
 📧 Contact: info@lawvriksh.com
+
+📝 **Help us improve!** Please take a moment to share your feedback: www.lawvriksh.com/feedback
         """,
-        "schedule": datetime(2025, 7, 30, 10, 30, 0, tzinfo=IST)  # July 30, 2025, 10:30 AM IST
+        "schedule": datetime(2025, 8, 3, 10, 30, 0, tzinfo=IST)  # August 3, 2025, 10:30 AM IST (+4 days)
     },
     
     "platform_complete": {
@@ -128,8 +132,10 @@ The LawVriksh Team
 🌐 Visit us: https://www.lawvriksh.com
 📧 Contact: info@lawvriksh.com
 🚀 Beta Access: Coming Soon!
+
+📝 **Help us improve!** Please take a moment to share your feedback: www.lawvriksh.com/feedback
         """,
-        "schedule": datetime(2025, 8, 3, 9, 0, 0, tzinfo=IST)  # August 3, 2025, 9:00 AM IST
+        "schedule": datetime(2025, 8, 7, 9, 0, 0, tzinfo=IST)  # August 7, 2025, 9:00 AM IST (+4 days)
     }
 }
 
