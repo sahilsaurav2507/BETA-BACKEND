@@ -69,9 +69,7 @@ class Settings(BaseSettings):
     REDIS_PASSWORD: str = ""
     REDIS_URL: str = "redis://localhost:6379/0"
 
-    # Celery Configuration (Background Tasks)
-    CELERY_BROKER_URL: str = "redis://localhost:6379/1"
-    CELERY_RESULT_BACKEND: str = "redis://localhost:6379/2"
+    # Background Tasks - using database-driven email queue (removed Celery)
 
     # Email Configuration
     EMAIL_FROM: str = "info@lawvriksh.com"

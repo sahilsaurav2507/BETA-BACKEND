@@ -14,9 +14,7 @@ from passlib.context import CryptContext
 # Set testing environment variable
 os.environ["TESTING"] = "true"
 
-# Mock Celery tasks for testing
-mock_celery_task = Mock()
-mock_celery_task.delay = Mock(return_value=Mock(id="test-task-id"))
+# No longer using Celery - removed mock tasks
 
 # Test database
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
@@ -53,10 +51,8 @@ def client(db_session):
 
     app.dependency_overrides[get_db] = override_get_db
 
-    # Mock Celery tasks during testing
-    with patch('app.api.auth.send_welcome_email_task', mock_celery_task), \
-         patch('app.api.admin.send_bulk_email_task', mock_celery_task):
-        yield TestClient(app)
+    # No Celery mocking needed since using database queue
+    yield TestClient(app)
 
     app.dependency_overrides.clear()
 

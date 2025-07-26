@@ -165,38 +165,38 @@ class EmailAndBackgroundTasksTest:
             self.log_test_result("RabbitMQ Connectivity", False, details)
             return False
     
-    def test_celery_worker_status(self) -> bool:
-        """Test if Celery workers are running."""
+    def test_email_queue_status(self) -> bool:
+        """Test if email queue system is working (replaces Celery worker test)."""
         try:
-            from app.tasks.email_tasks import celery_app
+            from app.services.email_queue_service import get_queue_stats
+            from app.core.dependencies import get_db
             
-            # Get active workers
-            inspect = celery_app.control.inspect()
-            active_workers = inspect.active()
-            
-            if active_workers:
-                worker_count = len(active_workers)
+            # Get database session
+            db = next(get_db())
+            try:
+                # Get queue statistics
+                stats = get_queue_stats(db)
+                
                 details = {
-                    "active_workers": worker_count,
-                    "worker_names": list(active_workers.keys()),
-                    "status": "✅ Celery workers are running"
+                    "total_emails": stats.total_emails,
+                    "pending_count": stats.pending_count,
+                    "processing_count": stats.processing_count,
+                    "sent_count": stats.sent_count,
+                    "failed_count": stats.failed_count,
+                    "status": "✅ Database email queue is operational"
                 }
                 success = True
-            else:
-                details = {
-                    "active_workers": 0,
-                    "status": "❌ No active Celery workers found",
-                    "recommendation": "Start Celery workers: celery -A app.tasks.celery_app worker --loglevel=info"
-                }
-                success = False
+                
+            finally:
+                db.close()
             
-            self.log_test_result("Celery Worker Status", success, details)
+            self.log_test_result("Email Queue Status", success, details)
             return success
             
         except Exception as e:
             details = {
                 "error": str(e),
-                "recommendation": "Check Celery configuration and worker processes"
+                "recommendation": "Check database connection and email queue tables"
             }
             self.log_test_result("Celery Worker Status", False, details)
             return False
@@ -240,44 +240,45 @@ class EmailAndBackgroundTasksTest:
             self.log_test_result("Email Service Function", False, details)
             return False
     
-    def test_celery_task_queuing(self) -> bool:
-        """Test Celery task queuing for welcome email."""
+    def test_email_queue_processing(self) -> bool:
+        """Test email queue system for welcome email (replaces Celery task test)."""
         try:
-            from app.tasks.email_tasks import send_welcome_email_task
+            from app.services.email_queue_service import add_email_to_queue
+            from app.schemas.email_queue import EmailQueueCreate
+            from app.models.email_queue import EmailType
+            from app.core.dependencies import get_db
             
-            # Queue the welcome email task
-            task_result = send_welcome_email_task.delay(
-                self.test_user["email"], 
-                self.test_user["name"]
-            )
+            # Get database session
+            db = next(get_db())
+            try:
+                # Queue the welcome email
+                email_data = EmailQueueCreate(
+                    user_email=self.test_user["email"],
+                    user_name=self.test_user["name"],
+                    email_type=EmailType.welcome
+                )
+                
+                email_queue_entry = add_email_to_queue(db, email_data)
+                
+                queue_info = {
+                    "queue_id": email_queue_entry.id,
+                    "status": email_queue_entry.status.value,
+                    "scheduled_time": str(email_queue_entry.scheduled_time),
+                    "email_type": email_queue_entry.email_type.value
+                }
+                
+                success = email_queue_entry.status.value == "pending"
+                
+                details = {
+                    "queue_info": queue_info,
+                    "recipient": self.test_user["email"],
+                    "queue_status": "✅ Email queued successfully" if success else "❌ Email queueing failed"
+                }
+                
+            finally:
+                db.close()
             
-            # Wait a bit for task to be processed
-            time.sleep(2)
-            
-            # Check task status
-            task_status = task_result.status
-            task_info = {
-                "task_id": task_result.id,
-                "status": task_status,
-                "ready": task_result.ready(),
-                "successful": task_result.successful() if task_result.ready() else None
-            }
-            
-            if task_result.ready():
-                if task_result.successful():
-                    task_info["result"] = task_result.result
-                else:
-                    task_info["error"] = str(task_result.info)
-            
-            success = task_status in ['SUCCESS', 'PENDING'] or task_result.successful()
-            
-            details = {
-                "task_info": task_info,
-                "recipient": self.test_user["email"],
-                "queue_status": "✅ Task queued successfully" if success else "❌ Task failed"
-            }
-            
-            self.log_test_result("Celery Task Queuing", success, details)
+            self.log_test_result("Email Queue Processing", success, details)
             return success
             
         except Exception as e:
@@ -329,9 +330,9 @@ class EmailAndBackgroundTasksTest:
             ("Environment Variables", self.test_environment_variables),
             ("SMTP Connectivity", self.test_smtp_connectivity),
             ("RabbitMQ Connectivity", self.test_rabbitmq_connectivity),
-            ("Celery Worker Status", self.test_celery_worker_status),
+            ("Email Queue Status", self.test_email_queue_status),
             ("Email Service Function", self.test_email_service_function),
-            ("Celery Task Queuing", self.test_celery_task_queuing),
+            ("Email Queue Processing", self.test_email_queue_processing),
             ("Database Email Logging", self.test_database_email_logging),
         ]
         

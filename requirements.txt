@@ -5,7 +5,7 @@ alembic
 pymysql
 aiomysql
 diskcache
-celery
+# celery removed - using pure Python email processing
 python-dotenv
 pydantic>=2.0.0
 pydantic-settings

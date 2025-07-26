@@ -18,11 +18,13 @@ from app.services.email_campaign_service import (
     get_future_campaigns_for_new_user,
     send_scheduled_campaign_email
 )
-from app.tasks.email_tasks import (
-    send_bulk_campaign_task,
-    send_campaign_email_task,
-    process_due_campaigns_task
+from app.services.email_queue_service import (
+    add_email_to_queue, 
+    get_campaign_status,
+    add_campaign_emails_for_all_users
 )
+from app.schemas.email_queue import EmailQueueCreate
+from app.models.email_queue import EmailType
 from pydantic import BaseModel
 from typing import List, Dict, Any
 from datetime import datetime
@@ -115,30 +117,55 @@ def send_campaign(
         
         # Send to specific user
         if request.user_email and request.user_name:
-            task = send_campaign_email_task.delay(campaign_type, request.user_email, request.user_name)
+            # Map campaign type to EmailType enum
+            email_type_map = {
+                "welcome": EmailType.welcome,
+                "search_engine": EmailType.search_engine,
+                "portfolio_builder": EmailType.portfolio_builder,
+                "platform_complete": EmailType.platform_complete
+            }
+            
+            email_data = EmailQueueCreate(
+                user_email=request.user_email,
+                user_name=request.user_name,
+                email_type=email_type_map[campaign_type]
+            )
+            
+            queue_entry = add_email_to_queue(db, email_data)
             
             return CampaignSendResponse(
                 success=True,
                 message=f"Campaign '{campaign_type}' queued for {request.user_email}",
-                task_id=task.id,
+                task_id=str(queue_entry.id),
                 details={
                     "campaign_type": campaign_type,
                     "recipient": request.user_email,
-                    "send_type": "individual"
+                    "send_type": "individual",
+                    "queue_id": queue_entry.id
                 }
             )
         
         # Send to all users
         else:
-            task = send_bulk_campaign_task.delay(campaign_type)
+            # Map campaign type to EmailType enum
+            email_type_map = {
+                "welcome": EmailType.welcome,
+                "search_engine": EmailType.search_engine,
+                "portfolio_builder": EmailType.portfolio_builder,
+                "platform_complete": EmailType.platform_complete
+            }
+            
+            # Add campaign emails for all users
+            count = add_campaign_emails_for_all_users(db, email_type_map[campaign_type])
             
             return CampaignSendResponse(
                 success=True,
-                message=f"Bulk campaign '{campaign_type}' queued for all users",
-                task_id=task.id,
+                message=f"Bulk campaign '{campaign_type}' queued for {count} users",
+                task_id=f"bulk_{campaign_type}_{datetime.now().timestamp()}",
                 details={
                     "campaign_type": campaign_type,
-                    "send_type": "bulk"
+                    "send_type": "bulk",
+                    "user_count": count
                 }
             )
             
@@ -152,7 +179,10 @@ def send_campaign(
         )
 
 @router.post("/send-due", response_model=CampaignSendResponse)
-def send_due_campaigns(admin=Depends(get_current_admin)):
+def send_due_campaigns(
+    db: Session = Depends(get_db),
+    admin=Depends(get_current_admin)
+):
     """
     Send all campaigns that are currently due.
     
@@ -163,15 +193,29 @@ def send_due_campaigns(admin=Depends(get_current_admin)):
         CampaignSendResponse: Send operation result
     """
     try:
-        task = process_due_campaigns_task.delay()
+        # Get due campaigns and process them
+        due_campaigns = get_due_campaigns()
+        total_queued = 0
+        
+        for campaign_type in due_campaigns:
+            email_type_map = {
+                "search_engine": EmailType.search_engine,
+                "portfolio_builder": EmailType.portfolio_builder,
+                "platform_complete": EmailType.platform_complete
+            }
+            
+            if campaign_type in email_type_map:
+                count = add_campaign_emails_for_all_users(db, email_type_map[campaign_type])
+                total_queued += count
         
         return CampaignSendResponse(
             success=True,
-            message="Due campaigns processing queued",
-            task_id=task.id,
+            message=f"Due campaigns processed: {len(due_campaigns)} campaigns, {total_queued} emails queued",
+            task_id=f"due_campaigns_{datetime.now().timestamp()}",
             details={
                 "send_type": "due_campaigns",
-                "note": "All due campaigns will be processed automatically"
+                "campaigns_processed": due_campaigns,
+                "total_emails_queued": total_queued
             }
         )
         
@@ -228,6 +272,7 @@ def get_campaign_status(campaign_type: str, admin=Depends(get_current_admin)):
 @router.post("/test-sahil")
 def test_sahil_campaign(
     campaign_type: str = "welcome",
+    db: Session = Depends(get_db),
     admin=Depends(get_current_admin)
 ):
     """
@@ -252,14 +297,28 @@ def test_sahil_campaign(
             )
         
         # Send campaign email to Sahil
-        task = send_campaign_email_task.delay(campaign_type, sahil_email, sahil_name)
+        email_type_map = {
+            "welcome": EmailType.welcome,
+            "search_engine": EmailType.search_engine,
+            "portfolio_builder": EmailType.portfolio_builder,
+            "platform_complete": EmailType.platform_complete
+        }
+        
+        email_data = EmailQueueCreate(
+            user_email=sahil_email,
+            user_name=sahil_name,
+            email_type=email_type_map[campaign_type]
+        )
+        
+        queue_entry = add_email_to_queue(db, email_data)
         
         return {
             "success": True,
-            "message": f"Test campaign '{campaign_type}' sent to Sahil Saurav",
-            "task_id": task.id,
+            "message": f"Test campaign '{campaign_type}' queued for Sahil Saurav",
+            "task_id": str(queue_entry.id),
             "recipient": sahil_email,
-            "campaign_type": campaign_type
+            "campaign_type": campaign_type,
+            "queue_id": queue_entry.id
         }
         
     except HTTPException:

@@ -121,33 +121,35 @@ LawVriksh Team"""
         print(f"❌ Failed to send test email: {e}")
         return False
 
-def check_celery_status():
-    """Check if Celery is running and configured."""
-    print("\n🔄 CHECKING CELERY STATUS")
+def check_email_queue_status():
+    """Check if database email queue is working (replaces Celery check)."""
+    print("\n🔄 CHECKING EMAIL QUEUE STATUS")
     print("=" * 50)
     
     try:
-        # Try to import Celery tasks
-        from app.tasks.email_tasks import send_5_minute_welcome_email_task
-        print("✅ Celery tasks imported successfully")
+        from app.services.email_queue_service import get_queue_stats
+        from app.core.dependencies import get_db
         
-        # Check RabbitMQ connection
-        print(f"🐰 RabbitMQ URL: {settings.RABBITMQ_URL}")
-        
-        # Try to check if Celery worker is running
+        # Get database session
+        db = next(get_db())
         try:
-            result = subprocess.run(['celery', '--version'], capture_output=True, text=True, timeout=5)
-            if result.returncode == 0:
-                print(f"✅ Celery is installed: {result.stdout.strip()}")
-            else:
-                print("❌ Celery command failed")
-        except (subprocess.TimeoutExpired, FileNotFoundError):
-            print("⚠️  Celery command not found or timed out")
+            # Get queue statistics
+            stats = get_queue_stats(db)
+            
+            print(f"✅ Email queue system operational")
+            print(f"📊 Total emails: {stats.total_emails}")
+            print(f"⏳ Pending: {stats.pending_count}")
+            print(f"🚀 Processing: {stats.processing_count}")
+            print(f"✅ Sent: {stats.sent_count}")
+            print(f"❌ Failed: {stats.failed_count}")
+            
+        finally:
+            db.close()
         
         return True
         
     except Exception as e:
-        print(f"❌ Celery check failed: {e}")
+        print(f"❌ Email queue check failed: {e}")
         return False
 
 def check_signup_endpoint():
@@ -196,10 +198,10 @@ def main():
     if not email_ok:
         all_issues.append("❌ Email sending test failed")
     
-    # 4. Check Celery status
-    celery_ok = check_celery_status()
-    if not celery_ok:
-        all_issues.append("❌ Celery system issues detected")
+    # 4. Check Email Queue status
+    queue_ok = check_email_queue_status()
+    if not queue_ok:
+        all_issues.append("❌ Email queue system issues detected")
     
     # 5. Check signup endpoint
     signup_ok = check_signup_endpoint()

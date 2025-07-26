@@ -401,3 +401,5 @@
 2025-07-26 00:57:12,247 - app.services.email_queue_service - ERROR - Error getting pending emails: 'welcome' is not among the defined enum values. Enum name: emailtype. Possible values: WELCOME, SEARCH_ENGI.., PORTFOLIO_B.., PLATFORM_CO..
 2025-07-26 01:01:42,354 - __main__ - INFO - Email processor is running, no pending emails
 2025-07-26 01:02:01,553 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 01:06:42,486 - __main__ - INFO - Email processor is running, no pending emails
+2025-07-26 01:07:01,689 - __main__ - INFO - Email processor is running, no pending emails

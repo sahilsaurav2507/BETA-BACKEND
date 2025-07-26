@@ -14,7 +14,9 @@ from datetime import datetime, timedelta
 from app.services.user_service import authenticate_user, create_jwt_for_user, get_user_by_id, promote_user_to_admin, get_bulk_email_recipients
 from app.core.security import get_current_admin
 from app.schemas.user import UserLogin
-from app.tasks.email_tasks import send_bulk_email_task
+from app.services.email_queue_service import add_email_to_queue
+from app.schemas.email_queue import EmailQueueCreate
+from app.models.email_queue import EmailType
 from pydantic import BaseModel
 from app.utils.monitoring import inc_bulk_email_sent, inc_admin_promotion
 
@@ -354,10 +356,29 @@ def send_bulk_email(req: BulkEmailRequest, db: Session = Depends(get_db), admin=
     emails = [u.email for u in users]
     if not emails:
         raise HTTPException(status_code=404, detail="No users found for criteria")
-    send_bulk_email_task.delay(emails, req.subject, req.body)
+    # Queue emails in database (replaces Celery task)
+    queued_count = 0
+    for email in emails:
+        try:
+            # Find user name for email
+            user = next((u for u in users if u.email == email), None)
+            user_name = user.name if user else "User"
+            
+            email_data = EmailQueueCreate(
+                user_email=email,
+                user_name=user_name,
+                email_type=EmailType.welcome,  # Using welcome type for admin bulk emails
+                subject=req.subject,
+                body=req.body
+            )
+            add_email_to_queue(db, email_data)
+            queued_count += 1
+        except Exception as e:
+            logging.error(f"Failed to queue email for {email}: {e}")
+    
     inc_bulk_email_sent()
-    logging.info(f"Admin {admin['user_id']} sent bulk email to {len(emails)} users.")
-    return {"message": f"Bulk email sent to {len(emails)} users (task queued)"}
+    logging.info(f"Admin {admin['user_id']} queued bulk email for {queued_count}/{len(emails)} users.")
+    return {"message": f"Bulk email queued for {queued_count} users"}
 
 @router.post("/promote")
 def promote_user(req: PromoteRequest, db: Session = Depends(get_db), admin=Depends(get_current_admin)):
