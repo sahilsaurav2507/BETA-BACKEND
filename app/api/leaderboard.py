@@ -1,10 +1,19 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from app.core.dependencies import get_db
-from app.schemas.leaderboard import LeaderboardResponse, LeaderboardUser, AroundMeResponse, AroundMeUser, TopPerformersResponse, TopPerformer
+from app.schemas.leaderboard import (
+    LeaderboardResponse, LeaderboardUser, AroundMeResponse, AroundMeUser,
+    TopPerformersResponse, TopPerformer, PaginatedResponse
+)
+from app.schemas.user import UserLeaderboard
 from app.services.leaderboard_service import get_leaderboard, get_user_rank
 from app.services.raw_sql_service import raw_sql_service
+from app.services.optimized_query_service import optimized_query_service
 from app.utils.precomputed_leaderboard import precomputed_leaderboard
+from app.utils.pagination import (
+    get_pagination_params, PaginationParams, PaginationHelper,
+    leaderboard_pagination
+)
 from app.core.security import verify_access_token
 from fastapi.security import OAuth2PasswordBearer
 from app.models.user import User
@@ -17,56 +26,64 @@ router = APIRouter(prefix="/leaderboard", tags=["leaderboard"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 @router.get("", response_model=LeaderboardResponse)
-def leaderboard(page: int = Query(1, ge=1), limit: int = Query(50, ge=1, le=100), db: Session = Depends(get_db)):
+def leaderboard(
+    pagination: PaginationParams = Depends(get_pagination_params),
+    db: Session = Depends(get_db)
+):
     """
-    Get public leaderboard with pagination.
+    Get public leaderboard with optimized server-side pagination.
 
     This is a public endpoint that doesn't require authentication.
+    Uses efficient LIMIT/OFFSET queries for large dataset handling.
 
     Args:
-        page: Page number (starts from 1)
-        limit: Number of users per page (max 100)
+        pagination: Pagination parameters (page, limit)
         db: Database session
 
     Returns:
-        LeaderboardResponse: Paginated leaderboard data
+        LeaderboardResponse: Paginated leaderboard data with metadata
     """
     try:
-        # Get leaderboard data
-        leaderboard_data = get_leaderboard(db, page, limit)
-        total_users = db.query(User).count()
-        total_pages = (total_users + limit - 1) // limit
+        # Use optimized leaderboard pagination
+        result = leaderboard_pagination.paginate_leaderboard(
+            db,
+            page=pagination.page,
+            limit=pagination.limit,
+            include_admin=False
+        )
 
-        # Filter leaderboard data to only include expected fields
-        filtered_leaderboard = []
-        for u in leaderboard_data:
-            filtered_leaderboard.append({
-                "rank": u.get("rank"),
-                "user_id": u.get("user_id"),
-                "name": u.get("name"),
-                "points": u.get("points"),
-                "shares_count": u.get("shares_count"),
-                "badge": u.get("badge")
-            })
+        # Convert to response format with optimized data processing
+        leaderboard_users = []
+        for item in result["items"]:
+            # Calculate badge efficiently
+            badge = optimized_query_service._get_badge_for_rank(item.calculated_rank)
+
+            leaderboard_users.append(LeaderboardUser(
+                rank=item.calculated_rank,
+                user_id=item.user_id,
+                name=item.name,
+                points=item.total_points,
+                shares_count=item.shares_count,
+                badge=badge,
+                default_rank=item.default_rank,
+                rank_improvement=item.default_rank - item.calculated_rank if item.default_rank else 0
+            ))
 
         return LeaderboardResponse(
-            leaderboard=[LeaderboardUser(**u) for u in filtered_leaderboard],
-            pagination={
-                "page": page,
-                "limit": limit,
-                "total": total_users,
-                "pages": total_pages
-            },
+            leaderboard=leaderboard_users,
+            pagination=result["pagination"].dict(),
             metadata={
-                "total_users": total_users,
+                "total_users": result["pagination"].total,
                 "your_rank": None,  # No user context for public endpoint
-                "your_points": 0    # No user context for public endpoint
-            }
+                "your_points": 0,   # No user context for public endpoint
+                "top_score": leaderboard_users[0].points if leaderboard_users else 0,
+                "average_score": sum(user.points for user in leaderboard_users) / len(leaderboard_users) if leaderboard_users else 0
+            },
+            total_users=result["pagination"].total
         )
 
     except Exception as e:
-        import logging
-        logging.getLogger(__name__).error(f"Leaderboard failed: {e}")
+        logger.error(f"Leaderboard failed: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to retrieve leaderboard"

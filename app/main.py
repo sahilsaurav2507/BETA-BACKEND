@@ -4,7 +4,7 @@ from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from sqlalchemy import text
-from app.api import auth, users, shares, leaderboard, admin, campaigns, feedback, async_leaderboard, email_queue
+from app.api import auth, users, shares, leaderboard, admin, campaigns, feedback, async_leaderboard, email_queue, profiling
 from app.services.background_email_processor import start_background_email_processor, stop_background_email_processor
 from app.utils.monitoring import prometheus_middleware, prometheus_endpoint
 from app.core.error_handlers import setup_error_handlers, RateLimitError
@@ -176,6 +176,10 @@ app.add_middleware(
 # Prometheus monitoring middleware
 prometheus_middleware(app)
 
+# Database query profiling middleware (for development and monitoring)
+from app.middleware.query_profiler import query_profiling_middleware
+app.middleware("http")(query_profiling_middleware)
+
 # Add compression middleware for 60-80% smaller payloads (temporarily disabled due to content-length issues)
 # app.middleware("http")(compression_middleware)
 
@@ -189,6 +193,7 @@ app.include_router(admin.router)
 app.include_router(campaigns.router)
 app.include_router(feedback.router)
 app.include_router(email_queue.router)  # Email queue management API
+app.include_router(profiling.router)  # Database profiling and performance monitoring
 
 @app.get("/health")
 def health_check():
@@ -239,6 +244,68 @@ def get_performance_stats():
     except Exception as e:
         logger.error(f"Error getting performance stats: {e}")
         return {"error": "Failed to retrieve performance statistics"}
+
+@app.get("/debug-db-health")
+def debug_db_health():
+    """Comprehensive database health check for monitoring."""
+    try:
+        from app.core.dependencies import perform_db_health_check
+
+        # Perform database health check
+        is_healthy, health_info = perform_db_health_check()
+
+        if is_healthy:
+            return {
+                "status": "healthy",
+                "timestamp": datetime.utcnow().isoformat(),
+                **health_info
+            }
+        else:
+            return {
+                "status": "unhealthy",
+                "timestamp": datetime.utcnow().isoformat(),
+                **health_info
+            }
+
+    except Exception as e:
+        logger.error(f"Database health check error: {e}")
+        return {
+            "status": "unhealthy",
+            "timestamp": datetime.utcnow().isoformat(),
+            "error": str(e)
+        }
+
+@app.get("/monitoring/report")
+def monitoring_report():
+    """Get comprehensive monitoring report for production."""
+    try:
+        # Check if we're in production
+        environment = os.getenv("ENVIRONMENT", "development")
+
+        if environment == "production":
+            from production.monitoring import production_monitor
+            return production_monitor.generate_monitoring_report()
+        else:
+            # Development monitoring report
+            import psutil
+            return {
+                "timestamp": datetime.utcnow().isoformat(),
+                "environment": "development",
+                "status": "healthy",
+                "system_metrics": {
+                    "cpu_percent": psutil.cpu_percent(),
+                    "memory_percent": psutil.virtual_memory().percent,
+                    "disk_percent": psutil.disk_usage('/').percent
+                },
+                "message": "Full monitoring available in production mode"
+            }
+
+    except Exception as e:
+        logger.error(f"Monitoring report error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to generate monitoring report"
+        )
 
 @app.get("/benchmark")
 def performance_benchmark():
@@ -448,11 +515,16 @@ def debug_user_data():
         # Get all users with their actual points and shares
         users = db.query(User).filter(User.is_admin == False).order_by(User.total_points.desc()).limit(10).all()
 
-        user_data = []
-        for user in users:
-            # Get share events for this user
-            shares = db.query(ShareEvent).filter(ShareEvent.user_id == user.id).all()
+        # Fix N+1 query problem by using eager loading
+        from sqlalchemy.orm import selectinload
 
+        # Get users with their share events in a single optimized query
+        users_with_shares = db.query(User).options(
+            selectinload(User.share_events)  # Eager load share events
+        ).filter(User.is_admin == False).order_by(User.total_points.desc()).limit(10).all()
+
+        user_data = []
+        for user in users_with_shares:
             user_data.append({
                 "user_id": user.id,
                 "name": user.name,
@@ -466,7 +538,7 @@ def debug_user_data():
                         "platform": share.platform.value,
                         "points_earned": share.points_earned,
                         "created_at": share.created_at.isoformat()
-                    } for share in shares
+                    } for share in user.share_events  # Use the eager-loaded relationship
                 ]
             })
 

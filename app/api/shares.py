@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from app.core.dependencies import get_db
 from app.schemas.share import ShareCreate, ShareResponse, ShareHistoryResponse, ShareHistoryItem, ShareAnalyticsResponse
 from app.services.share_service import log_share_event
+from app.services.optimized_query_service import optimized_query_service
+from app.utils.pagination import get_pagination_params, PaginationParams
 from app.core.security import verify_access_token
 from fastapi.security import OAuth2PasswordBearer
 from app.models.share import ShareEvent, PlatformEnum
@@ -97,19 +99,48 @@ def share(
 def share_history(
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db),
-    page: int = 1,
-    limit: int = 20,
+    pagination: PaginationParams = Depends(get_pagination_params),
     platform: PlatformEnum = Query(None, description="Filter by platform")
 ):
-    """Get share history for the current user, optionally filtered by platform."""
+    """
+    Get share history for the current user with optimized pagination.
+
+    Uses server-side pagination with LIMIT/OFFSET for efficient large dataset handling.
+    Optionally filtered by platform with eager loading to prevent N+1 queries.
+    """
     payload = verify_access_token(token)
     if not payload:
         raise HTTPException(status_code=401, detail="Invalid token")
-    q = db.query(ShareEvent).filter(ShareEvent.user_id == payload["user_id"])
-    if platform:
-        q = q.filter(ShareEvent.platform == platform)
-    total = q.count()
-    shares = q.order_by(ShareEvent.created_at.desc()).offset((page-1)*limit).limit(limit).all()
+    # Use optimized share history pagination
+    from app.utils.pagination import share_history_pagination
+
+    result = share_history_pagination.paginate_user_shares(
+        db,
+        user_id=payload["user_id"],
+        page=pagination.page,
+        limit=pagination.limit,
+        platform=platform.value if platform else None
+    )
+
+    # Convert to response format
+    shares = [
+        ShareHistoryItem(
+            share_id=item.id,
+            platform=item.platform,
+            points_earned=item.points_earned,
+            timestamp=item.created_at
+        ) for item in result["items"]
+    ]
+
+    # Calculate totals for additional metadata
+    total_points = sum(share.points_earned for share in shares)
+
+    return ShareHistoryResponse(
+        shares=shares,
+        pagination=result["pagination"].dict(),
+        total_points=total_points,
+        total_shares=result["pagination"].total
+    )
     items = [ShareHistoryItem(share_id=s.id, platform=s.platform.value, points_earned=s.points_earned, timestamp=s.created_at) for s in shares]
     return ShareHistoryResponse(
         shares=items,
@@ -141,36 +172,55 @@ def share_analytics(token: str = Depends(oauth2_scheme), db: Session = Depends(g
                 headers={"WWW-Authenticate": "Bearer"}
             )
 
-        # Get user's share events
-        q = db.query(ShareEvent).filter(ShareEvent.user_id == payload["user_id"])
-        total_shares = q.count()
+        # Use optimized query service for comprehensive analytics
 
-        # Calculate points breakdown by platform
-        points_breakdown = {}
-        for platform in PlatformEnum:
-            p_q = q.filter(ShareEvent.platform == platform.value)  # Use platform.value for comparison
-            shares = p_q.all()
-            points_breakdown[platform.value] = {
-                "shares": len(shares),
-                "points": sum(s.points_earned for s in shares)
-            }
+        # Use optimized query service for analytics
+        analytics = optimized_query_service.get_share_analytics_optimized(
+            db, payload["user_id"]
+        )
 
-        # Get recent activity
-        recent = q.order_by(ShareEvent.created_at.desc()).limit(5).all()
-        recent_activity = []
-        for s in recent:
-            # Handle both enum and string platform values
-            platform_value = s.platform.value if hasattr(s.platform, 'value') else str(s.platform)
-            recent_activity.append({
-                "platform": platform_value,
-                "points": str(s.points_earned),  # Convert to string as expected by schema
-                "timestamp": s.created_at.isoformat()
-            })
+        # Calculate additional performance metrics
+        total_points = sum(
+            platform_data["points"]
+            for platform_data in analytics.points_breakdown.values()
+        )
+
+        performance_metrics = {
+            "avg_points_per_share": (
+                total_points / analytics.total_shares
+                if analytics.total_shares > 0 else 0
+            ),
+            "most_valuable_platform": max(
+                analytics.points_breakdown.items(),
+                key=lambda x: x[1]["points"],
+                default=("none", {"points": 0})
+            )[0] if analytics.points_breakdown else "none",
+            "platform_diversity": len([
+                platform for platform, data in analytics.points_breakdown.items()
+                if data["shares"] > 0
+            ])
+        }
+
+        # Enhanced platform stats
+        platform_stats = {}
+        for platform, data in analytics.points_breakdown.items():
+            if data["shares"] > 0:
+                platform_stats[platform] = {
+                    **data,
+                    "avg_points": data["points"] / data["shares"] if data["shares"] > 0 else 0,
+                    "percentage_of_total": (
+                        data["shares"] / analytics.total_shares * 100
+                        if analytics.total_shares > 0 else 0
+                    )
+                }
 
         return ShareAnalyticsResponse(
-            total_shares=total_shares,
-            points_breakdown=points_breakdown,
-            recent_activity=recent_activity
+            total_shares=analytics.total_shares,
+            total_points=total_points,
+            points_breakdown=analytics.points_breakdown,
+            recent_activity=analytics.recent_activity,
+            platform_stats=platform_stats,
+            performance_metrics=performance_metrics
         )
 
     except HTTPException:
